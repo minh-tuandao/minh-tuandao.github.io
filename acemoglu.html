@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.353">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Minh Dao">
+
+<title>Minh Dao’s website - Income and Democracy: A Replication paper</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Minh Dao’s website</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html" rel="" target="">
+ <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./about.html" rel="" target="">
+ <span class="menu-text">About me</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./research.html" rel="" target="">
+ <span class="menu-text">Research Projects</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-assignments" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+ <span class="menu-text">Assignments</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-assignments">    
+        <li>
+    <a class="dropdown-item" href="./assignment1.html" rel="" target="">
+ <span class="dropdown-text">Assignment 1</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+            <div class="quarto-navbar-tools ms-auto">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#abstract" id="toc-abstract" class="nav-link active" data-scroll-target="#abstract">Abstract</a></li>
+  <li><a href="#i.-introduction" id="toc-i.-introduction" class="nav-link" data-scroll-target="#i.-introduction">I. Introduction</a></li>
+  <li><a href="#ii.-literature-review" id="toc-ii.-literature-review" class="nav-link" data-scroll-target="#ii.-literature-review">II. Literature review</a></li>
+  <li><a href="#iii.-research-question-and-hypothesis" id="toc-iii.-research-question-and-hypothesis" class="nav-link" data-scroll-target="#iii.-research-question-and-hypothesis">III. Research question and hypothesis</a></li>
+  <li><a href="#iv.-descriptive-statistics" id="toc-iv.-descriptive-statistics" class="nav-link" data-scroll-target="#iv.-descriptive-statistics">IV. Descriptive statistics</a></li>
+  <li><a href="#v.-model-specification-and-data-collection" id="toc-v.-model-specification-and-data-collection" class="nav-link" data-scroll-target="#v.-model-specification-and-data-collection">V. Model specification and data collection</a></li>
+  <li><a href="#vi.-results" id="toc-vi.-results" class="nav-link" data-scroll-target="#vi.-results">VI. Results</a>
+  <ul class="collapse">
+  <li><a href="#estimation-results-pooled-ols-vs.-two-way-fe" id="toc-estimation-results-pooled-ols-vs.-two-way-fe" class="nav-link" data-scroll-target="#estimation-results-pooled-ols-vs.-two-way-fe">Estimation results: pooled OLS vs.&nbsp;two-way FE</a></li>
+  <li><a href="#estimation-results-in-the-sub-samples-based-on-past-colonial-experiences" id="toc-estimation-results-in-the-sub-samples-based-on-past-colonial-experiences" class="nav-link" data-scroll-target="#estimation-results-in-the-sub-samples-based-on-past-colonial-experiences">Estimation results in the sub-samples based on past colonial experiences</a></li>
+  </ul></li>
+  <li><a href="#vii.-conclusion" id="toc-vii.-conclusion" class="nav-link" data-scroll-target="#vii.-conclusion">VII. Conclusion</a></li>
+  <li><a href="#extra---replication-with-ajrys-specification" id="toc-extra---replication-with-ajrys-specification" class="nav-link" data-scroll-target="#extra---replication-with-ajrys-specification">Extra - Replication with AJRY’s specification</a>
+  <ul class="collapse">
+  <li><a href="#replication-of-table-2-plot-only" id="toc-replication-of-table-2-plot-only" class="nav-link" data-scroll-target="#replication-of-table-2-plot-only">Replication of Table 2 (plot only)</a></li>
+  <li><a href="#replication-of-table-5-plot-only" id="toc-replication-of-table-5-plot-only" class="nav-link" data-scroll-target="#replication-of-table-5-plot-only">Replication of Table 5 (plot only)</a></li>
+  <li><a href="#replication-of-table-6-plot-only" id="toc-replication-of-table-6-plot-only" class="nav-link" data-scroll-target="#replication-of-table-6-plot-only">Replication of Table 6 (plot only)</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Income and Democracy: A Replication paper</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Minh Dao </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="abstract" class="level1">
+<h1>Abstract</h1>
+<p>In the famous paper about “Income and Democracy”, Acemoglu et al (2008) (henceforth, “AJRY”) criticized the modernization theory and proved that spurious relationship between income and democracy “disappears” when we control for country-specific factors and time effects. While there are some later papers confirming AJRY’s robust results, Cervelleti et al suggests there may be a significant heterogeneous income effect: positive income effect for former colonies and negative for non-colonies sub-group. My approach is to re-examine the robustness results of AJRY and Cervelleti et al (2014) at the same time with regards to (1) different dataset, (2) wider time interval, (3) different time frequency, (4) different measurement of democracy index, and (5) sub-samples. My result confirms AJRY robust results and possibly questions the significant heterogeneous effects of income in sub-samples by Cervelleti et (2014).</p>
+</section>
+<section id="i.-introduction" class="level1">
+<h1>I. Introduction</h1>
+<p>In the famous paper “Income and Democracy”, Acemoglu and colleagues <span class="citation" data-cites="acemoglu2008">(<a href="#ref-acemoglu2008" role="doc-biblioref">2008</a>)</span> tried to prove the spurious causal relationship touted by modernization theory: income causes democracy. Instead, if we control for both unit and time fix-effects, that spurious relationship no longer holds. While their paper utilized instrumental variable: saving rate and trade-weighted democracy, that part may be an additional proof for confidence in the null-finding results. I will focus mostly on the fix-effect models. In this paper, here are the following work I will take: (1) I will build a whole new dataset with indicators of GDP per capita <span class="citation" data-cites="wdi">(<a href="#ref-wdi" role="doc-biblioref">World Bank 2023</a>)</span>, and the democracy index (i.e., liberal/democracy index “<code>v2x_libdem</code>”, and electoral index “<code>v2x_polyarchy</code>”) is taken from Varieties of democracy project <span class="citation" data-cites="v-dem23">(<a href="#ref-v-dem23" role="doc-biblioref">Michael Coppedge et al. 2023</a>)</span>. (2) I also include AJRY’s classification for countries with <code>colony</code> status in the 500-year dataset to check whether there is heterogeneous “effect” of income on democracy in the <code>colony</code> subset. (3) I focus on the annual data rather than five-year interval data as the original paper did, and I reuse their dynamic model specification (from now on, “AJRY’s model” for brevity): including the lagged term for both democracy and income. In other words, I will replicate their work in (i) a completely new dataset and a longer period from 1960 to 2022 (compared with 1960-2000 in the original paper), (ii) change the measurement of democracy rating by two popular indexes of V-dem project: Liberal democracy &amp; Electoral democracy, and (iii) check for any heterogeneous effect of income on democracy within the sub-group of <code>colony</code> or <code>non-colony</code> (as defined in the 500-year regression part), this is never addressed in the original paper. This replication may be meaningful for several reasons. <strong>First</strong>, we can test the robustness of AJRY’s conclusion about the relationship between income and democracy (Lipset’s law) with a whole different dataset and a new measurement of democracy index <span class="citation" data-cites="wdi v-dem23">(<a href="#ref-wdi" role="doc-biblioref">World Bank 2023</a>; <a href="#ref-v-dem23" role="doc-biblioref">Michael Coppedge et al. 2023</a>)</span>. <strong>Second</strong>, most of AJRY’s model specifications make use of five-year interval while I focus on annual dataset. <strong>Third</strong>, there is a possibility of heterogeneous effect of income depending on the sub-group: countries that were former colonies and countries that were not, this aspect is not addressed in the original AJRY’s paper but is suggested by later academicians <span class="citation" data-cites="cervellati">(<a href="#ref-cervellati" role="doc-biblioref">Cervellati et al. 2014</a>)</span>. This paper is divided into the following sections. The second part is literature review, the third part states the research question and hypothesis, the fourth part will describe our data, the fifth part clarifies about the model specification and data collection, the six part focuses on the estimated results and discussion, and finally the seventh part is our conclusion.</p>
+</section>
+<section id="ii.-literature-review" class="level1">
+<h1>II. Literature review</h1>
+<p>Modernization theory, mostly based on Lipset’s observation of economic development and democracy, tries to explain the strong correlation over the year between income and democracy <span class="citation" data-cites="lipset">(<a href="#ref-lipset" role="doc-biblioref">Lipset 1959</a>)</span>. However, the seminal paper by AJRY (2008) cast doubt on such spurious causal relationship: income leads to democracy by proving that once we account for unobservable and observable country factors and time effects, that “causal” relationship is gone <span class="citation" data-cites="acemoglu2008">(<a href="#ref-acemoglu2008" role="doc-biblioref">Acemoglu et al. 2008</a>)</span>. In other words, the more concrete question to ask is whether each individual countries observed over time will be more democratic - that is the intuition behind the “within estimator” for two-way fix-effects model. AJRY results are convincingly robust for different estimation strategies and data source <span class="citation" data-cites="cervellati">(<a href="#ref-cervellati" role="doc-biblioref">Cervellati et al. 2014</a>)</span>. There are also critics of AJRY’s and they do find results supporting Lipset’s law by employing the same/different dataset with different estimation technique <span class="citation" data-cites="che2013 benhabib boix2011democracy">(<a href="#ref-che2013" role="doc-biblioref">Che et al. 2013</a>; <a href="#ref-benhabib" role="doc-biblioref">Benhabib, Corvalan, and Spiegel 2011</a>; <a href="#ref-boix2011democracy" role="doc-biblioref">Boix 2011</a>)</span>. In fact, the income-democracy nexus debate still has not had a conclusive answer <span class="citation" data-cites="broderstad2018">(<a href="#ref-broderstad2018" role="doc-biblioref">Broderstad 2018</a>)</span>.</p>
+</section>
+<section id="iii.-research-question-and-hypothesis" class="level1">
+<h1>III. Research question and hypothesis</h1>
+<p>Research question can be stated as: “Does income affect democracy?”. We then can formulate the hypothesis as: <span class="math inline">\(H_{0}:\)</span> GDP per capita (proxy for income) has no effect on the democracy index, <span class="math inline">\(H_{1}:\)</span> GDP per capita has an effect on the democracy index.</p>
+<p>In this paper, my expectation is that we see null effect of income, just like AJRY’s results. The causal path from income to democratization involves a lot of “unobservable” processes (e.g., culture, norms, etc.), generally dubbed “country-specific factors”. Just by increasing income and the observed correlated higher democracy qualifying for a causation is an over-generalization.</p>
+</section>
+<section id="iv.-descriptive-statistics" class="level1">
+<h1>IV. Descriptive statistics</h1>
+<p>Let’s look at our data:</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Descriptive Statistics
+==========================================================
+Statistic             N    Mean   St. Dev.  Min     Max   
+----------------------------------------------------------
+Identifiers         9,437  82.4     47.0     1      164   
+Year                9,437 1,991.7   17.8   1,960   2,021  
+GDP/cap             8,436 7,109.7 13,661.8 12.8  133,590.1
+Liberal democracy   9,391   0.3     0.3    0.005    0.9   
+Electoral democracy 9,435   0.4     0.3    0.01     0.9   
+Former colony       8,783   0.6     0.5      0       1    
+----------------------------------------------------------</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Descriptive Statistics after standardization
+======================================================
+Statistic             N    Mean   St. Dev.  Min   Max 
+------------------------------------------------------
+Identifiers         9,437  82.4     47.0     1    164 
+Year                9,437 1,991.7   17.8   1,960 2,021
+GDP/cap             8,436   7.5     1.7     2.6  11.8 
+Liberal democracy   9,391   0.3     0.3    0.005  0.9 
+Electoral democracy 9,435   0.4     0.3    0.01   0.9 
+Former colony       8,783   0.6     0.5      0     1  
+------------------------------------------------------</code></pre>
+</div>
+</div>
+<p>As we can see in Table 1, we have 164 countries in the dataset from 1960 to 2021, with the average GDP per capita worldwide of $7109 (current price, <span class="citation" data-cites="wdi">(<a href="#ref-wdi" role="doc-biblioref">World Bank 2023</a>)</span>). The average democracy rating index is 0.3 and 0.4 worldwide 1960-2021 on the scale of 0 (lowest democracy) to 1 (highest democracy). The highest democratic rate ever recorded is 0.9 with regard to both liberal and electoral democracy index. In this dataset, around 60% of the sample (excluding countries with no “colony” classification according to AJRY’s model) has a history of being a former colony in the period of 1500-2021. There is nothing abnormal about data (e.g.&nbsp;“negative values”). Table 2 shows the value of log of gdp per capita: we know that the range of this variable varies wildly from country to country, it is therefore better to standardize by using logarithm formula.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="acemoglu_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="acemoglu_files/figure-html/unnamed-chunk-3-2.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>As we can see from a simple plot showing the relationship between two sub-types of democracy index, there is a strong tendency: the more income, the better democracy one’s country becomes. Let’s see how the democracy changes over time.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="acemoglu_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="acemoglu_files/figure-html/unnamed-chunk-4-2.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>There is a clear tendency that from 1960 to 2021, we see a progress of “better” democracy over time. Just by looking at these graphs above, it is easy to see that modernization makes sense: the richer gets to become more democratic. However, we should control for year fix-effect and (unobservable) country fix-effect to actually obtain the causal estimate of how income affects democracy. In reality, the spurious relationship shown in the graphs disappear when we control for unit and time fix-effects. This effect is robust and has been replicated by many other papers with different estimate techniques (e.g., instrumental variables method) and different datasets <span class="citation" data-cites="acemoglu2008 cervellati">(<a href="#ref-acemoglu2008" role="doc-biblioref">Acemoglu et al. 2008</a>; <a href="#ref-cervellati" role="doc-biblioref">Cervellati et al. 2014</a>)</span>.</p>
+</section>
+<section id="v.-model-specification-and-data-collection" class="level1">
+<h1>V. Model specification and data collection</h1>
+<p>I will use the AJRY’s dynamic model specification. (a) Dependent variable is the democracy index, which is the liberal democracy index (main) and electoral democracy index (for comparison) taken from the Varieties of Democracy Institute <span class="citation" data-cites="v-dem23">(<a href="#ref-v-dem23" role="doc-biblioref">Michael Coppedge et al. 2023</a>)</span>. (b) Indepedent variable is the GDP per capita. I use the World Development Indicators by World Bank <span class="citation" data-cites="wdi">(<a href="#ref-wdi" role="doc-biblioref">World Bank 2023</a>)</span>. (c) Lagged indepdent variables are the lagged democracy index at <span class="math inline">\(t-5\)</span> and the lagged GDP per capita at <span class="math inline">\(t-5\)</span>. In the original AJRY’s specification, they used both lagged terms at <span class="math inline">\(t-1\)</span> for 5-year interval data, thus I change the lagged terms at <span class="math inline">\(t-5\)</span> for annual data.<br>
+(d) The sample will include full sample, sample with only former colonies, and sample with only non-colonies. <code>colony</code> status will be classified truthfully to the AJRY’s original data.</p>
+<p>For the detailed methodologies and the proof of fix-effects formula, please consult the original paper AJRY <span class="citation" data-cites="acemoglu2008">(<a href="#ref-acemoglu2008" role="doc-biblioref">2008</a>)</span>.</p>
+<p>While we know that fix-effects model works best with the assumption of time-invariant factors in the error term, the unobservable time-varying and heterogeneity of country-specific factors may bias the fix-effects estimation. We know there may be limitation in this method, also addressed in AJRY original paper, our main goal here is to test the robustness of AJRY’s two-way fix-effects model as AJRY did, in fact, address this by instrumental variable approach and obtained a solid null effect.</p>
+<p>Now I will use the <code>plm</code> package in R to conduct both <em>pooled OLS</em> and <em>two-way fixed-effects</em> models with the above specification.</p>
+</section>
+<section id="vi.-results" class="level1">
+<h1>VI. Results</h1>
+
+<table style="text-align:center">
+<caption>
+<strong>Estimation results Pooled OLS vs.&nbsp;2-way FE</strong>
+</caption>
+<tbody><tr>
+<td colspan="5" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td colspan="4">
+<em>Dependent variable:</em>
+</td>
+</tr>
+<tr>
+<td>
+</td>
+<td colspan="4" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td colspan="2">
+(DV: Liberal democracy)
+</td>
+<td colspan="2">
+(DV: Electoral democracy)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+Pooling
+</td>
+<td>
+FE 2-way
+</td>
+<td>
+Pooling
+</td>
+<td>
+FE 2-way
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(1)
+</td>
+<td>
+(2)
+</td>
+<td>
+(3)
+</td>
+<td>
+(4)
+</td>
+</tr>
+<tr>
+<td colspan="5" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+democracy<sub>t-5</sub>
+</td>
+<td>
+</td>
+<td>
+0.639<sup>***</sup>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+(0.009)
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+democracy<sub>t-5</sub>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+0.593<sup>***</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+(0.009)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+GDP/capita<sub>t-5</sub>
+</td>
+<td>
+</td>
+<td>
+-0.009
+</td>
+<td>
+</td>
+<td>
+-0.040
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+(0.023)
+</td>
+<td>
+</td>
+<td>
+(0.027)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+GDP/capita
+</td>
+<td>
+0.835<sup>***</sup>
+</td>
+<td>
+0.056<sup>**</sup>
+</td>
+<td>
+0.807<sup>***</sup>
+</td>
+<td>
+0.054<sup>*</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(0.011)
+</td>
+<td>
+(0.024)
+</td>
+<td>
+(0.012)
+</td>
+<td>
+(0.028)
+</td>
+</tr>
+<tr>
+<td colspan="5" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Observations
+</td>
+<td>
+8,411
+</td>
+<td>
+7,562
+</td>
+<td>
+8,434
+</td>
+<td>
+7,586
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+R<sup>2</sup>
+</td>
+<td>
+0.390
+</td>
+<td>
+0.418
+</td>
+<td>
+0.346
+</td>
+<td>
+0.362
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Adjusted R<sup>2</sup>
+</td>
+<td>
+0.390
+</td>
+<td>
+0.401
+</td>
+<td>
+0.346
+</td>
+<td>
+0.343
+</td>
+</tr>
+<tr>
+<td colspan="5" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+<em>Note:</em>
+</td>
+<td colspan="4" style="text-align:right">
+<sup><em></em></sup><em>p&lt;0.1; <sup><strong></strong></sup><strong>p&lt;0.05; <sup></sup></strong></em>p&lt;0.01
+</td>
+</tr>
+
+</tbody></table>
+<section id="estimation-results-pooled-ols-vs.-two-way-fe" class="level2">
+<h2 class="anchored" data-anchor-id="estimation-results-pooled-ols-vs.-two-way-fe">Estimation results: pooled OLS vs.&nbsp;two-way FE</h2>
+<p>In Table 3, let us interpret the coefficients (level-log interpretation).<br>
+<strong>For both pooled OLS model</strong>, a 1% increase in GDP per capita results in approximately 0.008 point increase in both democracy index on average and ceteris paribus, and this is effect is statistically signification (p&lt;0.01).<br>
+<strong>For both two-way fix-effects model</strong>, a 1% increase in GDP per capita results in approximately 0.0005 point increase in both democracy index on average and ceteris paribus, and this effect is statistically significant (p&lt;0.05).<br>
+We should note that we are talking about a 0-1 scale democracy index, the value seems small but is considerable: for pooled OLS model, a 100% increase in GDP per capita will result in 0.8 point increase!</p>
+<p><em>As the Table 3 shows</em>, the pooled OLS shows statistically significant coefficient of GDP per capita, this effect loses much of its significance when we control for country fix-effects and time fix-effects. In particular, the coefficients of both two-way fix-effects model are still statistically significant (p-value &lt; 0.05), their effects are substantively weak (close to zero). By comparing two index of democracy, we can hardly see any substantive and significant effect of income - this is as we expected.<br>
+</p>
+<p>The AJRY’s result is definitely: (i) robust to the change in frequency of data points, (ii) robust to different measurement of the democracy index, (iii) robust to the change of a whole new data source of GDP per capita, and (iv) robust to the wider time range (1960-2021). This confirms the external validity of AJRY’s paper.<br>
+</p>
+</section>
+<section id="estimation-results-in-the-sub-samples-based-on-past-colonial-experiences" class="level2">
+<h2 class="anchored" data-anchor-id="estimation-results-in-the-sub-samples-based-on-past-colonial-experiences">Estimation results in the sub-samples based on past colonial experiences</h2>
+
+<table style="text-align:center">
+<caption>
+<strong>Estimation results for colony/non-colony sub-group</strong>
+</caption>
+<tbody><tr>
+<td colspan="5" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td colspan="4">
+<em>Dependent variable:</em>
+</td>
+</tr>
+<tr>
+<td>
+</td>
+<td colspan="4" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td colspan="2">
+(DV: Liberal democracy)
+</td>
+<td colspan="2">
+(DV: Electoral democracy)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+Former colonies
+</td>
+<td>
+Non-colonies
+</td>
+<td>
+Former colonies
+</td>
+<td>
+Non-colonies
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(1)
+</td>
+<td>
+(2)
+</td>
+<td>
+(3)
+</td>
+<td>
+(4)
+</td>
+</tr>
+<tr>
+<td colspan="5" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+democracy<sub>t-5</sub>
+</td>
+<td>
+0.662<sup>***</sup>
+</td>
+<td>
+0.637<sup>***</sup>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(0.011)
+</td>
+<td>
+(0.015)
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+democracy<sub>t-5</sub>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+0.599<sup>***</sup>
+</td>
+<td>
+0.608<sup>***</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+(0.012)
+</td>
+<td>
+(0.016)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+GDP/capita<sub>t-5</sub>
+</td>
+<td>
+-0.064<sup>**</sup>
+</td>
+<td>
+0.137<sup>***</sup>
+</td>
+<td>
+-0.077<sup>**</sup>
+</td>
+<td>
+0.109<sup>***</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(0.032)
+</td>
+<td>
+(0.035)
+</td>
+<td>
+(0.039)
+</td>
+<td>
+(0.040)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+GDP/capita
+</td>
+<td>
+0.074<sup>**</sup>
+</td>
+<td>
+-0.051
+</td>
+<td>
+0.061
+</td>
+<td>
+-0.050
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(0.033)
+</td>
+<td>
+(0.036)
+</td>
+<td>
+(0.040)
+</td>
+<td>
+(0.040)
+</td>
+</tr>
+<tr>
+<td colspan="5" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Observations
+</td>
+<td>
+4,744
+</td>
+<td>
+2,344
+</td>
+<td>
+4,747
+</td>
+<td>
+2,365
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+R<sup>2</sup>
+</td>
+<td>
+0.420
+</td>
+<td>
+0.462
+</td>
+<td>
+0.351
+</td>
+<td>
+0.413
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Adjusted R<sup>2</sup>
+</td>
+<td>
+0.401
+</td>
+<td>
+0.436
+</td>
+<td>
+0.330
+</td>
+<td>
+0.385
+</td>
+</tr>
+<tr>
+<td colspan="5" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+<em>Note:</em>
+</td>
+<td colspan="4" style="text-align:right">
+<sup><em></em></sup><em>p&lt;0.1; <sup><strong></strong></sup><strong>p&lt;0.05; <sup></sup></strong></em>p&lt;0.01
+</td>
+</tr>
+
+</tbody></table>
+<p><strong>For former colonies sub-sample</strong>, as the Table 4 shows, the effect of GDP per capita is positive (and significant only for liberal democracy index, not for electoral measure). However, we can see that the substantive effect is still low. <strong>For non-colonies sub-sample</strong>, the effect of GDP per capita is “negative” but we do not have strong evidence to reject the null hypothesis of null effect (i.e., their 95% confidence interval includes zero). With this evidence, we can conclude that AJRY’s result is still robust in the sub-group based on colonial experience. While Cervellati and collegues suggests there may be significant heterogeneous effects: positive income effect in former colonies and negative income effect in the non-colonies sample <span class="citation" data-cites="cervellati">(<a href="#ref-cervellati" role="doc-biblioref">Cervellati et al. 2014</a>)</span>, our results prove that there is no strong evidence of heterogeneous effect of income in sub-samples. This result can be attributed to our annual frequency and different source of dataset and wider time interval (1960-2021), compared to Cervellati et al’s, this may raise the question of external validity of their finding.</p>
+</section>
+</section>
+<section id="vii.-conclusion" class="level1">
+<h1>VII. Conclusion</h1>
+<p>Lipset’s law or modernization theory proposes that income is a significant factor leading to democracy. Now we know that modernization theory is flawed: such spurious causal link will be broken when we account for historical and/or country-specific factors <span class="citation" data-cites="acemoglu2008">(<a href="#ref-acemoglu2008" role="doc-biblioref">Acemoglu et al. 2008</a>)</span>. On the surface, we can clearly see the positive correlation: the wealthier the country, the more democratic it becomes. Naive regression can surely strengthen this point; however, a more critical approach in closing “backdoor path” will debunk the spurious correlation and makes us think more before falling into “correlation implies causation” trap. By following the model specification of Acemoglu et al (2008), we build a whole new dataset from World Bank and V-dem Institute such that: (1) our data covers the time range from 1960 to 2021; (2) we change the measurement of democracy index and use both liberal and electoral indexes as comparison; (3) we focus on the annual frequency rather than their main five-year interval; (4) we examine the sub-samples to check the validity of heterogeneous effects of income in sub-sample (i.e., colonial experiences) as suggested by Cervellati et al (2014). Our conclusion is that AJRY results are robust to (i) time range, (ii) time frequency of the data, (iii) measurement of democracy, (iv) different dataset, and (v) sub-samples with regards to our estimation.</p>
+</section>
+<section id="extra---replication-with-ajrys-specification" class="level1">
+<h1>Extra - Replication with AJRY’s specification</h1>
+<p>This section I will replicate exclusively <strong>5-year panel data</strong> of the original dataset. Note that the original data is to be used with STATA. 1. Table 2: Pooled OLS vs 2-way FE 2. Table 5: IV approach: saving rate - income - democracy (possible channel: saving rate - labor share - income - democracy) 3. Table 6: IV approach: trade-weighted GDP - income - democracy (possible channel: trade-weighted GDP - trade-weighted democracy - income - democracy)</p>
+<p>The results cast doubt on the spurious relationship between income and democracy, in particular income may not lead to democratization. While the instrumental variable approach by AJRY seems like a weak evidence to cast doubt on income - democracy nexus, all the evidence from two-way fixed-effects to IV fixed-effects models make some points regarding the null finding from AJRY.</p>
+<p>Let’s see each table as follows.</p>
+<section id="replication-of-table-2-plot-only" class="level2">
+<h2 class="anchored" data-anchor-id="replication-of-table-2-plot-only">Replication of Table 2 (plot only)</h2>
+<p>Let’s take a look at models 1, 2, and 5 from Table 2 with the 95% CI plot:</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="acemoglu_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Remember that, DV: Democracy; IV: log Income/capita (t-1).</p>
+<p>We can confirm that: 1. Pooled OLS shows that there is an effect of income on democracy. 2. After controlling for unit-specific time-invariant effects (i.e., conditional on the confounders/ close the backdoor path), the effects are gone (Two-way FE Model 2) or substantively small to neglect (Two-way FE Model 5).</p>
+</section>
+<section id="replication-of-table-5-plot-only" class="level2">
+<h2 class="anchored" data-anchor-id="replication-of-table-5-plot-only">Replication of Table 5 (plot only)</h2>
+<p>Table 5 Replication from Model 4 to Model 9 (excluding model 6 - Arellano-Bond GMM model). From Model 4 to 9, Acemoglu et al (2008) used instrumental variable with two-way fixed effects. For my interest, I will replicate only this part and exclude model 6.</p>
+<p>Let’s plot the result of first stage. <em>Note that, DV now is lag of log Income/capita (t-1), IV is the saving rate lagged by (t-2) or (t-3)</em>.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="acemoglu_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>We see our instrumental variable saving rate is strongly correlated with the income. The authors proposed one possible channel (i.e., labor share): labor share also correlates strongly with income.</p>
+<p>And, the second stage:</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="acemoglu_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>We do see that the income effect is predicted around 0. Moreover, labor share effect is also possibly null: the exclusion restriction may be upheld (i.e., “labor share” - <em>a channel of saving rate</em> - predicts “income” but not “democracy”). While we have never been able to “list out” every possible underlying channel, the authors tried their best to prove that income does not predict democracy at all.</p>
+</section>
+<section id="replication-of-table-6-plot-only" class="level2">
+<h2 class="anchored" data-anchor-id="replication-of-table-6-plot-only">Replication of Table 6 (plot only)</h2>
+<p>Table 6 Replication, from Model 4 to 9 (excluding model 5) Here I use <code>plm</code> package:</p>
+<p>First stage:</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="acemoglu_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>We can see that trade-weighted GDP strongly predicts income, and the possible channel trade-weighted democracy also strongly predicts income.</p>
+<p>And, the second stage:</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="acemoglu_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Now, we can see that the lagged income is predicted to be close to zero. We know that IV method is inefficient and the standard error is wide. But again, this can be a (weak) evidence showing that income has null effect on democratization.</p>
+<p>Again, the possible channel (trade-weighted democracy) seems like having null effect on democracy, which makes the exclusion restriction seems valid.</p>
+
+
+
+</section>
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-acemoglu2008" class="csl-entry" role="listitem">
+Acemoglu, Daron, Simon Johnson, James A. Robinson, and Pierre Yared. 2008. <span>“Income and Democracy.”</span> <em>The American Economic Review</em> 98 (3): 808–42. <a href="http://www.jstor.org/stable/29730096">http://www.jstor.org/stable/29730096</a>.
+</div>
+<div id="ref-benhabib" class="csl-entry" role="listitem">
+Benhabib, Jess, Alejandro Corvalan, and Mark M Spiegel. 2011. <span>“Reestablishing the Income-Democracy Nexus.”</span> National Bureau of Economic Research.
+</div>
+<div id="ref-boix2011democracy" class="csl-entry" role="listitem">
+Boix, Carles. 2011. <span>“Democracy, Development, and the International System.”</span> <em>American Political Science Review</em> 105 (4): 809–28.
+</div>
+<div id="ref-broderstad2018" class="csl-entry" role="listitem">
+Broderstad, Troy Saghaug. 2018. <span>“A Meta-Analysis of Income and Democracy.”</span> <em>Democratization</em> 25 (2): 293–311.
+</div>
+<div id="ref-cervellati" class="csl-entry" role="listitem">
+Cervellati, Matteo, Florian Jung, Uwe Sunde, and Thomas Vischer. 2014. <span>“Income and Democracy: Comment.”</span> <em>American Economic Review</em> 104 (2): 707–19. <a href="https://doi.org/10.1257/aer.104.2.707">https://doi.org/10.1257/aer.104.2.707</a>.
+</div>
+<div id="ref-che2013" class="csl-entry" role="listitem">
+Che, Yi, Yi Lu, Zhigang Tao, and Peng Wang. 2013. <span>“The Impact of Income on Democracy Revisited.”</span> <em>Journal of Comparative Economics</em> 41 (1): 159–69.
+</div>
+<div id="ref-lipset" class="csl-entry" role="listitem">
+Lipset, Seymour Martin. 1959. <span>“Some Social Requisites of Democracy: Economic Development and Political Legitimacy1.”</span> <em>American Political Science Review</em> 53 (1): 69–105.
+</div>
+<div id="ref-v-dem23" class="csl-entry" role="listitem">
+Michael Coppedge et al. 2023. <span>“<span class="nocase">V-Dem Country-Year/Country-Date Dataset v13</span>.”</span> Varieties of Democracy (V-Dem) Project. <a href="https://www.v-dem.net/en/data/data-version-13/">https://www.v-dem.net/en/data/data-version-13/</a>.
+</div>
+<div id="ref-wdi" class="csl-entry" role="listitem">
+World Bank. 2023. <span>“World Development Indicators.”</span>
+</div>
+</div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
