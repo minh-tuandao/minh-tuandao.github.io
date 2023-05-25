@@ -1,0 +1,11 @@
+---
+title: "Research"
+---
+
+My research methodologies include DiD, synthetic control method, trajectory balancing, etc.
+
+My research topics include political economy of foreign direct investment
+
+```{r}
+1 + 1
+```

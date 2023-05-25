@@ -1,0 +1,37 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Minh Dao’s Website",
+    "section": "",
+    "text": "Hi everyone,\nMy name is Minh Dao, currently I am a PhD candidate of PPPE program at UT Dallas with expected graduation in 2027.\nI have lots of interests in a wide range of research areas in (international) political economy such as income and democracy nexus, bilateral investment treaties and foreign direct investment relationship, etc. I am also developing my quantitative skills in this PhD program with various models such as: two-way fix-effects and/or dynamic modelling, two-way fix-effects with difference-in-difference design, synthetic control method, etc.\nMy website includes some samples of my past projects and assignments for the current summer class of 2023."
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About me",
+    "section": "",
+    "text": "About myself:\nI am currently a PhD candidate in Public Policy and Political Economy program at the University of Texas at Dallas with a focus on quantitative methodology, in particular I am also interested in pursuing a minor in Geographic Information Systems program as an extended methodological tools for policy analysis.\nMy research topics include the political economy of foreign direct investment, investment and/or trade agreements among countries. Moreover, I am also keen on improving/developing my methodological skills by learning from great examples of some of the general political economy or economic debates such as income - democracy nexus, Basque’s terrorism impact on GDP per capita, etc.\nMy contact via email: mtd220000@utdallas.edu or tuanminh112093@gmail.com."
+  },
+  {
+    "objectID": "research.html",
+    "href": "research.html",
+    "title": "Research Projects",
+    "section": "",
+    "text": "I have a vested interested in developing my methodological know-how, especially quantitative approaches. Here are some examples of my paper and past class assignments (replication) as a way of self-learning not just about the paper per se, but an attempt to learn coding about various programs such as STATA, R.\n\nMixed effects model (both random- and fixed-effects) evaluating the information processing of vulnerable groups and the outcome of adoption of health messages in COVID-19 (Dao and Lim 2022). The theoretical framework in use is based on Extended Parallel Process Model by Witte.\nTwo-way fix-effects with dynamic modeling based on income - democracy nexus with the replication of the famous Income and Democracy paper (Acemoglu et al. 2008) with (i) different dataset, (ii) time frequency from five-year to annual interval, (iii) longer time span from 1960 to 2022, (iv) checking for heterogeneous effect of income in sub-samples (countries with past 500-year colonial experience or not). Please find my replication paper here (update later).\nSynthetic control method: replication based on the famous paper on the effect of Basque’s terrorism on GDP per capita (Abadie and Gardeazabal 2003) with comments from an improved synthetic control, i.e., augmented synthetic control (Ben-Michael, Feller, and Rothstein 2021). Please find my replication paper here (update later).\n\n\n\n\n\nReferences\n\nAbadie, Alberto, and Javier Gardeazabal. 2003. “The Economic Costs of Conflict: A Case Study of the Basque Country.” American Economic Review 93 (1): 113–32.\n\n\nAcemoglu, Daron, Simon Johnson, James A. Robinson, and Pierre Yared. 2008. “Income and Democracy.” The American Economic Review 98 (3): 808–42. http://www.jstor.org/stable/29730096.\n\n\nBen-Michael, Eli, Avi Feller, and Jesse Rothstein. 2021. “The Augmented Synthetic Control Method.” Journal of the American Statistical Association 116 (536): 1789–1803.\n\n\nDao, Minh Tuan, and Seunghoo Lim. 2022. “Fear of Disasters Within the Risk Communication Network of Foreign Students in Japan Amid the COVID-19 Pandemic Crisis: A Cohort Design.” International Journal of Disaster Risk Reduction 71 (March): 102808. https://doi.org/10.1016/j.ijdrr.2022.102808."
+  },
+  {
+    "objectID": "assignments.html",
+    "href": "assignments.html",
+    "title": "Assignments",
+    "section": "",
+    "text": "Here are the assignment files uploaded:\n\nAssignment 1\nAssignment 2\nAssignment 3"
+  },
+  {
+    "objectID": "assignment1.html",
+    "href": "assignment1.html",
+    "title": "Assignment 1",
+    "section": "",
+    "text": "Here is the first assignment (drafting a research project framework):\n\nTopic: bilateral investment treaties (BITs) and foreign direct investment (FDI)\nResearch question: What is the effect of termination of bilateral investment treaties on the foreign direct investment (FDI)?\nOutcome variable is annual FDI inflow of a country\nHypothesis: termination of BITs should lead to a decrease in FDI inflow."
+  }
+]
