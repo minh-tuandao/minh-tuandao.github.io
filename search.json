@@ -30,9 +30,9 @@
   {
     "objectID": "assignment1.html",
     "href": "assignment1.html",
-    "title": "Assignment 1",
+    "title": "My Homework 1",
     "section": "",
-    "text": "Here is the first assignment (drafting a research project framework):\n\nTopic: bilateral investment treaties (BITs) and foreign direct investment (FDI)\nResearch question: What is the effect of termination of bilateral investment treaties on the foreign direct investment (FDI)?\nOutcome variable is annual FDI inflow of a country\nHypothesis: termination of BITs should lead to a decrease in FDI inflow."
+    "text": "This is to test"
   },
   {
     "objectID": "acemoglu.html#i.-introduction",
@@ -131,5 +131,12 @@
     "title": "Income and Democracy: A Replication paper",
     "section": "Replication of Table 6 (plot only)",
     "text": "Replication of Table 6 (plot only)\nTable 6 Replication, from Model 4 to 9 (excluding model 5) Here I use plm package:\nFirst stage:\n\n\n\n\n\nWe can see that trade-weighted GDP strongly predicts income, and the possible channel trade-weighted democracy also strongly predicts income.\nAnd, the second stage:\n\n\n\n\n\nNow, we can see that the lagged income is predicted to be close to zero. We know that IV method is inefficient and the standard error is wide. But again, this can be a (weak) evidence showing that income has null effect on democratization.\nAgain, the possible channel (trade-weighted democracy) seems like having null effect on democracy, which makes the exclusion restriction seems valid."
+  },
+  {
+    "objectID": "assignment2.html",
+    "href": "assignment2.html",
+    "title": "My Homework 2",
+    "section": "",
+    "text": "This is homework 2"
   }
 ]

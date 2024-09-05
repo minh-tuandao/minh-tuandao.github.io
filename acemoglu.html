@@ -121,7 +121,11 @@ div.csl-indent {
     <ul class="dropdown-menu" aria-labelledby="nav-menu-assignments">    
         <li>
     <a class="dropdown-item" href="./assignment1.html" rel="" target="">
- <span class="dropdown-text">Assignment 1</span></a>
+ <span class="dropdown-text">My Homework 1</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./assignment2.html" rel="" target="">
+ <span class="dropdown-text">My Homework 2</span></a>
   </li>  
     </ul>
   </li>
@@ -804,7 +808,10 @@ Adjusted R<sup>2</sup>
 </section>
 <section id="extra---replication-with-ajrys-specification" class="level1">
 <h1>Extra - Replication with AJRY’s specification</h1>
-<p>This section I will replicate exclusively <strong>5-year panel data</strong> of the original dataset. Note that the original data is to be used with STATA. 1. Table 2: Pooled OLS vs 2-way FE 2. Table 5: IV approach: saving rate - income - democracy (possible channel: saving rate - labor share - income - democracy) 3. Table 6: IV approach: trade-weighted GDP - income - democracy (possible channel: trade-weighted GDP - trade-weighted democracy - income - democracy)</p>
+<p>This section I will replicate exclusively <strong>5-year panel data</strong> of the original dataset. Note that the original data is to be used with STATA. 1. Table 2: Pooled OLS vs 2-way FE.<br>
+2. Table 5: IV approach: saving rate - income - democracy (possible channel: saving rate - labor share - income - democracy).<br>
+3. Table 6: IV approach: trade-weighted GDP - income - democracy (possible channel: trade-weighted GDP - trade-weighted democracy - income - democracy).<br>
+</p>
 <p>The results cast doubt on the spurious relationship between income and democracy, in particular income may not lead to democratization. While the instrumental variable approach by AJRY seems like a weak evidence to cast doubt on income - democracy nexus, all the evidence from two-way fixed-effects to IV fixed-effects models make some points regarding the null finding from AJRY.</p>
 <p>Let’s see each table as follows.</p>
 <section id="replication-of-table-2-plot-only" class="level2">
@@ -816,7 +823,13 @@ Adjusted R<sup>2</sup>
 </div>
 </div>
 <p>Remember that, DV: Democracy; IV: log Income/capita (t-1).</p>
-<p>We can confirm that: 1. Pooled OLS shows that there is an effect of income on democracy. 2. After controlling for unit-specific time-invariant effects (i.e., conditional on the confounders/ close the backdoor path), the effects are gone (Two-way FE Model 2) or substantively small to neglect (Two-way FE Model 5).</p>
+<p>We can confirm that:<br>
+</p>
+<ol type="1">
+<li><p>Pooled OLS shows that there is an effect of income on democracy.<br>
+</p></li>
+<li><p>After controlling for unit-specific time-invariant effects (i.e., conditional on the confounders/ close the backdoor path), the effects are gone (Two-way FE Model 2) or substantively small to neglect (Two-way FE Model 5).</p></li>
+</ol>
 </section>
 <section id="replication-of-table-5-plot-only" class="level2">
 <h2 class="anchored" data-anchor-id="replication-of-table-5-plot-only">Replication of Table 5 (plot only)</h2>
