@@ -155,6 +155,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="dropdown-item" href="./assignment6.html" rel="" target="">
  <span class="dropdown-text">My homework 6</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="./assignment7.html" rel="" target="">
+ <span class="dropdown-text">My homework 7</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./assignment8.html" rel="" target="">
+ <span class="dropdown-text">My homework 8</span></a>
+  </li>  
     </ul>
   </li>
 </ul>
@@ -255,7 +263,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="pre-hackathon" class="level1">
 <h1>Pre-hackathon</h1>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>owidall<span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"owid-covid-data.csv"</span>)</span>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>owidall<span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"https://raw.githubusercontent.com/owid/covid-19-data/refs/heads/master/public/data/owid-covid-data.csv"</span>)</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Deselect cases/rows with OWID</span></span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>owidall <span class="ot">=</span> owidall[<span class="sc">!</span><span class="fu">grepl</span>(<span class="st">"^OWID"</span>, owidall<span class="sc">$</span>iso_code), ]</span>
