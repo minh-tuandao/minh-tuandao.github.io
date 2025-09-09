@@ -1,0 +1,79 @@
+[
+  {
+    "objectID": "abadie.html",
+    "href": "abadie.html",
+    "title": "Assignment 1",
+    "section": "",
+    "text": "Here is the first assignment (drafting a research project framework):\n\nTopic: bilateral investment treaties (BITs) and foreign direct investment (FDI)\nResearch question: What is the effect of termination of bilateral investment treaties on the foreign direct investment (FDI)?\nOutcome variable is annual FDI inflow of a country\nHypothesis: termination of BITs should lead to a decrease in FDI inflow."
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About me",
+    "section": "",
+    "text": "About myself:\nI am currently a PhD candidate in Public Policy and Political Economy program at the University of Texas at Dallas with a focus on quantitative methodology, in particular I am also interested in pursuing a minor in Geographic Information Systems program as an extended methodological tools for policy analysis.\nMy research topics include the political economy of foreign direct investment, investment and/or trade agreements among countries. Moreover, I am also keen on improving/developing my methodological skills by learning from great examples of some of the general political economy or economic debates such as income - democracy nexus, Basque’s terrorism impact on GDP per capita, etc.\nMy contact via email: mtd220000@utdallas.edu or tuanminh112093@gmail.com."
+  },
+  {
+    "objectID": "acemoglu.html",
+    "href": "acemoglu.html",
+    "title": "Income and Democracy: A Replication paper",
+    "section": "",
+    "text": "In the famous paper about “Income and Democracy”, Acemoglu et al (2008) (henceforth, “AJRY”) criticized the modernization theory and proved that spurious relationship between income and democracy “disappears” when we control for country-specific factors and time effects. While there are some later papers confirming AJRY’s robust results, Cervelleti et al suggests there may be a significant heterogeneous income effect: positive income effect for former colonies and negative for non-colonies sub-group. My approach is to re-examine the robustness results of AJRY and Cervelleti et al (2014) at the same time with regards to (1) different dataset, (2) wider time interval, (3) different time frequency, (4) different measurement of democracy index, and (5) sub-samples. My result confirms AJRY robust results and possibly questions the significant heterogeneous effects of income in sub-samples by Cervelleti et (2014)."
+  },
+  {
+    "objectID": "acemoglu.html#estimation-results-pooled-ols-vs.-two-way-fe",
+    "href": "acemoglu.html#estimation-results-pooled-ols-vs.-two-way-fe",
+    "title": "Income and Democracy: A Replication paper",
+    "section": "Estimation results: pooled OLS vs. two-way FE",
+    "text": "Estimation results: pooled OLS vs. two-way FE\nIn Table 3, let us interpret the coefficients (level-log interpretation).\nFor both pooled OLS model, a 1% increase in GDP per capita results in approximately 0.008 point increase in both democracy index on average and ceteris paribus, and this is effect is statistically signification (p&lt;0.01).\nFor both two-way fix-effects model, a 1% increase in GDP per capita results in approximately 0.0005 point increase in both democracy index on average and ceteris paribus, and this effect is statistically significant (p&lt;0.05).\nWe should note that we are talking about a 0-1 scale democracy index, the value seems small but is considerable: for pooled OLS model, a 100% increase in GDP per capita will result in 0.8 point increase!\nAs the Table 3 shows, the pooled OLS shows statistically significant coefficient of GDP per capita, this effect loses much of its significance when we control for country fix-effects and time fix-effects. In particular, the coefficients of both two-way fix-effects model are still statistically significant (p-value &lt; 0.05), their effects are substantively weak (close to zero). By comparing two index of democracy, we can hardly see any substantive and significant effect of income - this is as we expected.\n\nThe AJRY’s result is definitely: (i) robust to the change in frequency of data points, (ii) robust to different measurement of the democracy index, (iii) robust to the change of a whole new data source of GDP per capita, and (iv) robust to the wider time range (1960-2021). This confirms the external validity of AJRY’s paper."
+  },
+  {
+    "objectID": "acemoglu.html#estimation-results-in-the-sub-samples-based-on-past-colonial-experiences",
+    "href": "acemoglu.html#estimation-results-in-the-sub-samples-based-on-past-colonial-experiences",
+    "title": "Income and Democracy: A Replication paper",
+    "section": "Estimation results in the sub-samples based on past colonial experiences",
+    "text": "Estimation results in the sub-samples based on past colonial experiences\n\n\nEstimation results for colony/non-colony sub-group\n\n\n\n\n\n\n\n\n\nDependent variable:\n\n\n\n\n\n\n\n\n\n\n\n\n(DV: Liberal democracy)\n\n\n(DV: Electoral democracy)\n\n\n\n\n\n\nFormer colonies\n\n\nNon-colonies\n\n\nFormer colonies\n\n\nNon-colonies\n\n\n\n\n\n\n(1)\n\n\n(2)\n\n\n(3)\n\n\n(4)\n\n\n\n\n\n\n\n\ndemocracyt-5\n\n\n0.662***\n\n\n0.637***\n\n\n\n\n\n\n\n\n\n\n(0.011)\n\n\n(0.015)\n\n\n\n\n\n\n\n\ndemocracyt-5\n\n\n\n\n\n\n0.599***\n\n\n0.608***\n\n\n\n\n\n\n\n\n\n\n(0.012)\n\n\n(0.016)\n\n\n\n\nGDP/capitat-5\n\n\n-0.064**\n\n\n0.137***\n\n\n-0.077**\n\n\n0.109***\n\n\n\n\n\n\n(0.032)\n\n\n(0.035)\n\n\n(0.039)\n\n\n(0.040)\n\n\n\n\nGDP/capita\n\n\n0.074**\n\n\n-0.051\n\n\n0.061\n\n\n-0.050\n\n\n\n\n\n\n(0.033)\n\n\n(0.036)\n\n\n(0.040)\n\n\n(0.040)\n\n\n\n\n\n\n\n\nObservations\n\n\n4,744\n\n\n2,344\n\n\n4,747\n\n\n2,365\n\n\n\n\nR2\n\n\n0.420\n\n\n0.462\n\n\n0.351\n\n\n0.413\n\n\n\n\nAdjusted R2\n\n\n0.401\n\n\n0.436\n\n\n0.330\n\n\n0.385\n\n\n\n\n\n\n\n\nNote:\n\n\np&lt;0.1; p&lt;0.05; p&lt;0.01\n\n\n\nFor former colonies sub-sample, as the Table 4 shows, the effect of GDP per capita is positive (and significant only for liberal democracy index, not for electoral measure). However, we can see that the substantive effect is still low. For non-colonies sub-sample, the effect of GDP per capita is “negative” but we do not have strong evidence to reject the null hypothesis of null effect (i.e., their 95% confidence interval includes zero). With this evidence, we can conclude that AJRY’s result is still robust in the sub-group based on colonial experience. While Cervellati and collegues suggests there may be significant heterogeneous effects: positive income effect in former colonies and negative income effect in the non-colonies sample (Cervellati et al. 2014), our results prove that there is no strong evidence of heterogeneous effect of income in sub-samples. This result can be attributed to our annual frequency and different source of dataset and wider time interval (1960-2021), compared to Cervellati et al’s, this may raise the question of external validity of their finding."
+  },
+  {
+    "objectID": "acemoglu.html#replication-of-table-2-plot-only",
+    "href": "acemoglu.html#replication-of-table-2-plot-only",
+    "title": "Income and Democracy: A Replication paper",
+    "section": "Replication of Table 2 (plot only)",
+    "text": "Replication of Table 2 (plot only)\nLet’s take a look at models 1, 2, and 5 from Table 2 with the 95% CI plot:\n\n\n\n\n\n\n\n\n\nRemember that, DV: Democracy; IV: log Income/capita (t-1).\nWe can confirm that:\n\n\nPooled OLS shows that there is an effect of income on democracy.\n\nAfter controlling for unit-specific time-invariant effects (i.e., conditional on the confounders/ close the backdoor path), the effects are gone (Two-way FE Model 2) or substantively small to neglect (Two-way FE Model 5)."
+  },
+  {
+    "objectID": "acemoglu.html#replication-of-table-5-plot-only",
+    "href": "acemoglu.html#replication-of-table-5-plot-only",
+    "title": "Income and Democracy: A Replication paper",
+    "section": "Replication of Table 5 (plot only)",
+    "text": "Replication of Table 5 (plot only)\nTable 5 Replication from Model 4 to Model 9 (excluding model 6 - Arellano-Bond GMM model). From Model 4 to 9, Acemoglu et al (2008) used instrumental variable with two-way fixed effects. For my interest, I will replicate only this part and exclude model 6.\nLet’s plot the result of first stage. Note that, DV now is lag of log Income/capita (t-1), IV is the saving rate lagged by (t-2) or (t-3).\n\n\n\n\n\n\n\n\n\nWe see our instrumental variable saving rate is strongly correlated with the income. The authors proposed one possible channel (i.e., labor share): labor share also correlates strongly with income.\nAnd, the second stage:\n\n\n\n\n\n\n\n\n\nWe do see that the income effect is predicted around 0. Moreover, labor share effect is also possibly null: the exclusion restriction may be upheld (i.e., “labor share” - a channel of saving rate - predicts “income” but not “democracy”). While we have never been able to “list out” every possible underlying channel, the authors tried their best to prove that income does not predict democracy at all."
+  },
+  {
+    "objectID": "acemoglu.html#replication-of-table-6-plot-only",
+    "href": "acemoglu.html#replication-of-table-6-plot-only",
+    "title": "Income and Democracy: A Replication paper",
+    "section": "Replication of Table 6 (plot only)",
+    "text": "Replication of Table 6 (plot only)\nTable 6 Replication, from Model 4 to 9 (excluding model 5) Here I use plm package:\nFirst stage:\n\n\n\n\n\n\n\n\n\nWe can see that trade-weighted GDP strongly predicts income, and the possible channel trade-weighted democracy also strongly predicts income.\nAnd, the second stage:\n\n\n\n\n\n\n\n\n\nNow, we can see that the lagged income is predicted to be close to zero. We know that IV method is inefficient and the standard error is wide. But again, this can be a (weak) evidence showing that income has null effect on democratization.\nAgain, the possible channel (trade-weighted democracy) seems like having null effect on democracy, which makes the exclusion restriction seems valid."
+  },
+  {
+    "objectID": "research.html",
+    "href": "research.html",
+    "title": "Research Projects",
+    "section": "",
+    "text": "I have a vested interested in developing my methodological know-how, especially quantitative approaches. Here are some examples of my paper and past class assignments (replication) as an attempt to learn & use STATA, R.\n\nMixed effects model (both random- and fixed-effects) evaluating the information processing of vulnerable groups and the outcome of adoption of health messages in COVID-19 (Dao and Lim 2022). The theoretical framework in use is based on Extended Parallel Process Model by Witte.\nTwo-way fix-effects with dynamic modeling based on income - democracy nexus with the replication of the famous Income and Democracy paper (Acemoglu et al. 2008) with (i) different dataset, (ii) time frequency from five-year to annual interval, (iii) longer time span from 1960 to 2022, (iv) checking for heterogeneous effect of income in sub-samples (countries with past 500-year colonial experience or not). Please find my replication paper here.\nSynthetic control method: replication based on the famous paper on the effect of Basque’s terrorism on GDP per capita (Abadie and Gardeazabal 2003) with comments from an improved synthetic control, i.e., augmented synthetic control (Ben-Michael, Feller, and Rothstein 2021). Please find my replication paper here (update later).\n\n\n\n\n\nReferences\n\nAbadie, Alberto, and Javier Gardeazabal. 2003. “The Economic Costs of Conflict: A Case Study of the Basque Country.” American Economic Review 93 (1): 113–32.\n\n\nAcemoglu, Daron, Simon Johnson, James A. Robinson, and Pierre Yared. 2008. “Income and Democracy.” The American Economic Review 98 (3): 808–42. http://www.jstor.org/stable/29730096.\n\n\nBen-Michael, Eli, Avi Feller, and Jesse Rothstein. 2021. “The Augmented Synthetic Control Method.” Journal of the American Statistical Association 116 (536): 1789–1803.\n\n\nDao, Minh Tuan, and Seunghoo Lim. 2022. “Fear of Disasters Within the Risk Communication Network of Foreign Students in Japan Amid the COVID-19 Pandemic Crisis: A Cohort Design.” International Journal of Disaster Risk Reduction 71 (March): 102808. https://doi.org/10.1016/j.ijdrr.2022.102808."
+  },
+  {
+    "objectID": "assignment1.html",
+    "href": "assignment1.html",
+    "title": "Assignment 1",
+    "section": "",
+    "text": "Assignment 1\nThis website is created using RStudio Quarto. The cosmo theme is used for professional look.\nThe navigation bar includes links for connecting author’s contents in different areas."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Minh Dao’s Website",
+    "section": "",
+    "text": "Hi everyone,\nMy name is Minh Dao, currently I am a PhD candidate of PPPE program at UT Dallas with expected graduation in 2027.\nI have lots of interests in a wide range of research areas in (international) political economy such as income and democracy nexus, bilateral investment treaties and foreign direct investment relationship, etc. I am also developing my quantitative skills in this PhD program with various models such as: two-way fix-effects and/or dynamic modelling, two-way fix-effects with difference-in-difference design, synthetic control method, etc.\nMy website includes some samples of my past projects and assignments for the current class of Fall 2025 - Methods of Data Collection and Production."
+  }
+]
