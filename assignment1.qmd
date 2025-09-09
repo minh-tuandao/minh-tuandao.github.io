@@ -1,0 +1,9 @@
+---
+title: "Assignment 1"
+---
+
+# Assignment 1
+
+This website is created using RStudio Quarto. The cosmo theme is used for professional look.
+
+The navigation bar includes links for connecting author's contents in different areas.

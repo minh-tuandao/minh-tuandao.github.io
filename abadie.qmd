@@ -1,0 +1,10 @@
+---
+title: "Assignment 1"
+---
+
+Here is the first assignment (drafting a research project framework):
+
+1.  Topic: bilateral investment treaties (BITs) and foreign direct investment (FDI)
+2.  Research question: What is the effect of termination of bilateral investment treaties on the foreign direct investment (FDI)?
+3.  Outcome variable is annual FDI inflow of a country
+4.  Hypothesis: termination of BITs should lead to a decrease in FDI inflow.

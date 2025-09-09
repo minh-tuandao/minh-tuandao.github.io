@@ -1,0 +1,572 @@
+---
+title: 'Income and Democracy: A Replication paper'
+author: "Minh Dao"
+bibliography: references.bib
+---
+
+```{r, include=FALSE, echo=FALSE}
+# needed packages
+library(foreign)
+library(car)
+library(ggplot2)
+library(tidyverse)
+library(broom)
+library(magrittr)
+library(plm) #install.packages("plm")
+library(sjPlot)
+library(lme4)
+library(dynpanel)
+library(modelsummary)
+library(ggplot2)
+library(stargazer)
+library(wesanderson)
+library(lmtest)
+library(flextable)
+library(pandoc)
+library(gplots)
+
+# import dataset from World Bank, V-dem
+yearly_panel <- read.csv("dataset/yearly_panel_rep.csv")
+
+```
+
+# Abstract
+
+In the famous paper about "Income and Democracy", Acemoglu et al (2008) (henceforth, "AJRY") criticized the modernization theory and proved that spurious relationship between income and democracy "disappears" when we control for country-specific factors and time effects. While there are some later papers confirming AJRY's robust results, Cervelleti et al suggests there may be a significant heterogeneous income effect: positive income effect for former colonies and negative for non-colonies sub-group. My approach is to re-examine the robustness results of AJRY and Cervelleti et al (2014) at the same time with regards to (1) different dataset, (2) wider time interval, (3) different time frequency, (4) different measurement of democracy index, and (5) sub-samples. My result confirms AJRY robust results and possibly questions the significant heterogeneous effects of income in sub-samples by Cervelleti et (2014).
+
+# I. Introduction
+
+In the famous paper "Income and Democracy", Acemoglu and colleagues [-@acemoglu2008] tried to prove the spurious causal relationship touted by modernization theory: income causes democracy. Instead, if we control for both unit and time fix-effects, that spurious relationship no longer holds. While their paper utilized instrumental variable: saving rate and trade-weighted democracy, that part may be an additional proof for confidence in the null-finding results. I will focus mostly on the fix-effect models. In this paper, here are the following work I will take: (1) I will build a whole new dataset with indicators of GDP per capita [@wdi], and the democracy index (i.e., liberal/democracy index "`v2x_libdem`", and electoral index "`v2x_polyarchy`") is taken from Varieties of democracy project [@v-dem23]. (2) I also include AJRY's classification for countries with `colony` status in the 500-year dataset to check whether there is heterogeneous "effect" of income on democracy in the `colony` subset. (3) I focus on the annual data rather than five-year interval data as the original paper did, and I reuse their dynamic model specification (from now on, "AJRY's model" for brevity): including the lagged term for both democracy and income. In other words, I will replicate their work in (i) a completely new dataset and a longer period from 1960 to 2022 (compared with 1960-2000 in the original paper), (ii) change the measurement of democracy rating by two popular indexes of V-dem project: Liberal democracy & Electoral democracy, and (iii) check for any heterogeneous effect of income on democracy within the sub-group of `colony` or `non-colony` (as defined in the 500-year regression part), this is never addressed in the original paper. This replication may be meaningful for several reasons. **First**, we can test the robustness of AJRY's conclusion about the relationship between income and democracy (Lipset's law) with a whole different dataset and a new measurement of democracy index [@wdi; @v-dem23]. **Second**, most of AJRY's model specifications make use of five-year interval while I focus on annual dataset. **Third**, there is a possibility of heterogeneous effect of income depending on the sub-group: countries that were former colonies and countries that were not, this aspect is not addressed in the original AJRY's paper but is suggested by later academicians [@cervellati]. This paper is divided into the following sections. The second part is literature review, the third part states the research question and hypothesis, the fourth part will describe our data, the fifth part clarifies about the model specification and data collection, the six part focuses on the estimated results and discussion, and finally the seventh part is our conclusion.
+
+# II. Literature review
+
+Modernization theory, mostly based on Lipset's observation of economic development and democracy, tries to explain the strong correlation over the year between income and democracy [@lipset]. However, the seminal paper by AJRY (2008) cast doubt on such spurious causal relationship: income leads to democracy by proving that once we account for unobservable and observable country factors and time effects, that "causal" relationship is gone [@acemoglu2008]. In other words, the more concrete question to ask is whether each individual countries observed over time will be more democratic - that is the intuition behind the "within estimator" for two-way fix-effects model. AJRY results are convincingly robust for different estimation strategies and data source [@cervellati]. There are also critics of AJRY's and they do find results supporting Lipset's law by employing the same/different dataset with different estimation technique [@che2013; @benhabib; @boix2011democracy]. In fact, the income-democracy nexus debate still has not had a conclusive answer [@broderstad2018].
+
+# III. Research question and hypothesis
+
+Research question can be stated as: "Does income affect democracy?". We then can formulate the hypothesis as: $H_{0}:$ GDP per capita (proxy for income) has no effect on the democracy index, $H_{1}:$ GDP per capita has an effect on the democracy index.
+
+In this paper, my expectation is that we see null effect of income, just like AJRY's results. The causal path from income to democratization involves a lot of "unobservable" processes (e.g., culture, norms, etc.), generally dubbed "country-specific factors". Just by increasing income and the observed correlated higher democracy qualifying for a causation is an over-generalization.
+
+# IV. Descriptive statistics
+
+Let's look at our data:
+
+```{r, echo=FALSE}
+stargazer(yearly_panel, header=FALSE,
+          type="text", digits=1, title="Descriptive Statistics",
+          covariate.labels = c(
+            "Identifiers", "Year", "GDP/cap", "Liberal democracy", "Electoral democracy", "Former colony"
+          )
+          )
+
+#Standardization of the variable GDP per capita
+yearly_panel$gdp_percap <- log(yearly_panel$gdp_percap+1)
+stargazer(yearly_panel, header=FALSE,
+          type="text", digits=1, title="Descriptive Statistics after standardization",
+          covariate.labels = c(
+            "Identifiers", "Year", "GDP/cap", "Liberal democracy", "Electoral democracy", "Former colony"
+          )
+          )
+```
+
+As we can see in Table 1, we have 164 countries in the dataset from 1960 to 2021, with the average GDP per capita worldwide of \$7109 (current price, [@wdi]). The average democracy rating index is 0.3 and 0.4 worldwide 1960-2021 on the scale of 0 (lowest democracy) to 1 (highest democracy). The highest democratic rate ever recorded is 0.9 with regard to both liberal and electoral democracy index. In this dataset, around 60% of the sample (excluding countries with no "colony" classification according to AJRY's model) has a history of being a former colony in the period of 1500-2021. There is nothing abnormal about data (e.g. "negative values"). Table 2 shows the value of log of gdp per capita: we know that the range of this variable varies wildly from country to country, it is therefore better to standardize by using logarithm formula.
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#Standardization of the variable GDP per capita
+yearly_panel$gdp_percap <- log(yearly_panel$gdp_percap+1)
+
+ggplot(data=yearly_panel,
+       aes(x=gdp_percap, y=v2x_libdem))+
+  geom_point() + labs(y="Liberal Democracy", x="GDP per capita") +
+  labs(title="Plot of Liberal Democracy and GDP per capita") +
+  geom_smooth()
+ggplot(data=yearly_panel,
+       aes(x=gdp_percap, y=v2x_polyarchy))+
+  geom_point() + labs(y="Electoral Democracy", x="GDP per capita") +
+  labs(title="Plot of Electoral Democracy and GDP per capita") +
+  geom_smooth()
+
+```
+
+As we can see from a simple plot showing the relationship between two sub-types of democracy index, there is a strong tendency: the more income, the better democracy one's country becomes. Let's see how the democracy changes over time.
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+ggplot(data=yearly_panel,
+       aes(x=year, y=v2x_libdem))+
+  geom_point() + labs(y="Liberal Democracy", x="year") +
+  labs(title="Plot of Liberal Democracy over the year") +
+  geom_smooth(method="lm")
+
+ggplot(data=yearly_panel,
+       aes(x=year, y=v2x_polyarchy))+
+  geom_point() + labs(y="Electoral Democracy", x="year") +
+  labs(title="Plot of Electoral Democracy over the year") +
+  geom_smooth(method="lm")
+```
+
+There is a clear tendency that from 1960 to 2021, we see a progress of "better" democracy over time. Just by looking at these graphs above, it is easy to see that modernization makes sense: the richer gets to become more democratic. However, we should control for year fix-effect and (unobservable) country fix-effect to actually obtain the causal estimate of how income affects democracy. In reality, the spurious relationship shown in the graphs disappear when we control for unit and time fix-effects. This effect is robust and has been replicated by many other papers with different estimate techniques (e.g., instrumental variables method) and different datasets [@acemoglu2008; @cervellati].
+
+# V. Model specification and data collection
+
+I will use the AJRY's dynamic model specification. (a) Dependent variable is the democracy index, which is the liberal democracy index (main) and electoral democracy index (for comparison) taken from the Varieties of Democracy Institute [@v-dem23]. (b) Indepedent variable is the GDP per capita. I use the World Development Indicators by World Bank [@wdi]. (c) Lagged indepdent variables are the lagged democracy index at $t-5$ and the lagged GDP per capita at $t-5$. In the original AJRY's specification, they used both lagged terms at $t-1$ for 5-year interval data, thus I change the lagged terms at $t-5$ for annual data.\
+(d) The sample will include full sample, sample with only former colonies, and sample with only non-colonies. `colony` status will be classified truthfully to the AJRY's original data.
+
+For the detailed methodologies and the proof of fix-effects formula, please consult the original paper AJRY [-@acemoglu2008].
+
+While we know that fix-effects model works best with the assumption of time-invariant factors in the error term, the unobservable time-varying and heterogeneity of country-specific factors may bias the fix-effects estimation. We know there may be limitation in this method, also addressed in AJRY original paper, our main goal here is to test the robustness of AJRY's two-way fix-effects model as AJRY did, in fact, address this by instrumental variable approach and obtained a solid null effect.
+
+Now I will use the `plm` package in R to conduct both *pooled OLS* and *two-way fixed-effects* models with the above specification.
+
+# VI. Results
+
+```{r, echo=FALSE, warning=FALSE, results="asis"}
+
+ols1 <- plm(v2x_libdem ~ gdp_percap, data=yearly_panel,
+           index = c("iso3", "year"),
+           model = "pooling",
+           effect = "individual"
+           )
+
+fe_model1 <- plm(v2x_libdem ~ lag(v2x_libdem, 5) + lag(gdp_percap, 5) + gdp_percap, data=yearly_panel,
+           index = c("iso3", "year"),
+           model = "within",
+           effect = "twoways"
+           )
+ols2 <- plm(v2x_polyarchy ~ gdp_percap, data=yearly_panel,
+           index = c("iso3", "year"),
+           model = "pooling",
+           effect = "individual"
+           )
+
+fe_model2 <- plm(v2x_polyarchy ~ lag(v2x_polyarchy, 5) + lag(gdp_percap, 5)+ gdp_percap, data=yearly_panel,
+           index = c("iso3", "year"),
+           model = "within",
+           effect = "twoways"
+           )
+
+list_1 <- list (ols1, fe_model1, ols2, fe_model2)
+
+#modelsummary(list_1, stars=TRUE) 
+
+stargazer(list_1, title="Estimation results Pooled OLS vs. 2-way FE",
+          type="html", header=FALSE,
+          dep.var.labels = c("(DV: Liberal democracy)", "(DV: Electoral democracy)"),
+          column.labels=c("Pooling", "FE 2-way", "Pooling", "FE 2-way"),
+          covariate.labels =c("$democracy_{t-5}$", "$democracy_{t-5}$", "$GDP/capita_{t-5}$", "$GDP/capita$"),
+          omit=c("Constant"),
+          omit.stat = c("LL", "ser", "f"), no.space=TRUE
+          )
+```
+
+## Estimation results: pooled OLS vs. two-way FE
+
+In Table 3, let us interpret the coefficients (level-log interpretation).\
+**For both pooled OLS model**, a 1% increase in GDP per capita results in approximately 0.008 point increase in both democracy index on average and ceteris paribus, and this is effect is statistically signification (p\<0.01).\
+**For both two-way fix-effects model**, a 1% increase in GDP per capita results in approximately 0.0005 point increase in both democracy index on average and ceteris paribus, and this effect is statistically significant (p\<0.05).\
+We should note that we are talking about a 0-1 scale democracy index, the value seems small but is considerable: for pooled OLS model, a 100% increase in GDP per capita will result in 0.8 point increase!
+
+*As the Table 3 shows*, the pooled OLS shows statistically significant coefficient of GDP per capita, this effect loses much of its significance when we control for country fix-effects and time fix-effects. In particular, the coefficients of both two-way fix-effects model are still statistically significant (p-value \< 0.05), their effects are substantively weak (close to zero). By comparing two index of democracy, we can hardly see any substantive and significant effect of income - this is as we expected.\
+
+The AJRY's result is definitely: (i) robust to the change in frequency of data points, (ii) robust to different measurement of the democracy index, (iii) robust to the change of a whole new data source of GDP per capita, and (iv) robust to the wider time range (1960-2021). This confirms the external validity of AJRY's paper.\
+
+## Estimation results in the sub-samples based on past colonial experiences
+
+```{r, echo=FALSE, results="asis"}
+fe_model3 <- plm(v2x_libdem ~ lag(v2x_libdem, 5) + lag(gdp_percap, 5) + gdp_percap, 
+          data=subset(yearly_panel, colony==1),
+          index = c("iso3", "year"),
+          model = "within",
+          effect = "twoways"
+           )
+
+fe_model4 <- plm(v2x_libdem ~ lag(v2x_libdem, 5) + lag(gdp_percap, 5) + gdp_percap, 
+          data=subset(yearly_panel, colony==0),
+          index = c("iso3", "year"),
+          model = "within",
+          effect = "twoways"
+           )
+
+fe_model5 <- plm(v2x_polyarchy ~ lag(v2x_polyarchy, 5) + lag(gdp_percap, 5) + gdp_percap, 
+          data=subset(yearly_panel, colony==1),
+          index = c("iso3", "year"),
+          model = "within",
+          effect = "twoways"
+           )
+
+fe_model6 <- plm(v2x_polyarchy ~ lag(v2x_polyarchy, 5) + lag(gdp_percap, 5) + gdp_percap, 
+          data=subset(yearly_panel, colony==0),
+          index = c("iso3", "year"),
+          model = "within",
+          effect = "twoways"
+           )
+
+#modelplot(list(fe_model3, fe_model4), coef_omit = "Intercept",background=b)
+list2 <- list(fe_model3, fe_model4, fe_model5, fe_model6)
+
+stargazer(list2, 
+          title="Estimation results for colony/non-colony sub-group",
+          type="html", header=FALSE,
+          dep.var.labels = c("(DV: Liberal democracy)", "(DV: Electoral democracy)"),
+          column.labels=c("Former colonies", "Non-colonies", "Former colonies", "Non-colonies"),
+          covariate.labels =c("$democracy_{t-5}$", "$democracy_{t-5}$", "$GDP/capita_{t-5}$", "$GDP/capita$"),
+          omit=c("Constant"),
+          omit.stat = c("LL", "ser", "f"), no.space=TRUE
+          )
+```
+
+**For former colonies sub-sample**, as the Table 4 shows, the effect of GDP per capita is positive (and significant only for liberal democracy index, not for electoral measure). However, we can see that the substantive effect is still low. **For non-colonies sub-sample**, the effect of GDP per capita is "negative" but we do not have strong evidence to reject the null hypothesis of null effect (i.e., their 95% confidence interval includes zero). With this evidence, we can conclude that AJRY's result is still robust in the sub-group based on colonial experience. While Cervellati and collegues suggests there may be significant heterogeneous effects: positive income effect in former colonies and negative income effect in the non-colonies sample [@cervellati], our results prove that there is no strong evidence of heterogeneous effect of income in sub-samples. This result can be attributed to our annual frequency and different source of dataset and wider time interval (1960-2021), compared to Cervellati et al's, this may raise the question of external validity of their finding.
+
+# VII. Conclusion
+
+Lipset's law or modernization theory proposes that income is a significant factor leading to democracy. Now we know that modernization theory is flawed: such spurious causal link will be broken when we account for historical and/or country-specific factors [@acemoglu2008]. On the surface, we can clearly see the positive correlation: the wealthier the country, the more democratic it becomes. Naive regression can surely strengthen this point; however, a more critical approach in closing "backdoor path" will debunk the spurious correlation and makes us think more before falling into "correlation implies causation" trap. By following the model specification of Acemoglu et al (2008), we build a whole new dataset from World Bank and V-dem Institute such that: (1) our data covers the time range from 1960 to 2021; (2) we change the measurement of democracy index and use both liberal and electoral indexes as comparison; (3) we focus on the annual frequency rather than their main five-year interval; (4) we examine the sub-samples to check the validity of heterogeneous effects of income in sub-sample (i.e., colonial experiences) as suggested by Cervellati et al (2014). Our conclusion is that AJRY results are robust to (i) time range, (ii) time frequency of the data, (iii) measurement of democracy, (iv) different dataset, and (v) sub-samples with regards to our estimation.
+
+# Extra - Replication with AJRY's specification
+
+This section I will replicate exclusively **5-year panel data** of the original dataset. Note that the original data is to be used with STATA. 1. Table 2: Pooled OLS vs 2-way FE.\
+2. Table 5: IV approach: saving rate - income - democracy (possible channel: saving rate - labor share - income - democracy).\
+3. Table 6: IV approach: trade-weighted GDP - income - democracy (possible channel: trade-weighted GDP - trade-weighted democracy - income - democracy).\
+
+The results cast doubt on the spurious relationship between income and democracy, in particular income may not lead to democratization. While the instrumental variable approach by AJRY seems like a weak evidence to cast doubt on income - democracy nexus, all the evidence from two-way fixed-effects to IV fixed-effects models make some points regarding the null finding from AJRY.
+
+Let's see each table as follows.
+
+```{r, echo=FALSE}
+# load data
+X5_yr_panel <- read.csv("dataset/5_yr_panel.csv", header=TRUE)
+
+# background color for data visualization later
+b <- list(geom_vline(xintercept = 0, color = 'red'),
+          annotate("rect", alpha = .1,
+                   xmin = -.5, xmax = .5, 
+                   ymin = -Inf, ymax = Inf),
+          geom_point(aes(y = term, x = estimate), alpha = .1, 
+                     size = 5, color = 'blue'))
+
+# vector of all the models
+fe2sls <- c("FE 2SLS (4)", "FE 2SLS (5)", "FE 2SLS (7)", "FE 2SLS (8)", "FE 2SLS (9)")
+```
+
+## Replication of Table 2 (plot only)
+
+```{r, echo=FALSE}
+table2_m1 <- plm(fhpolrigaug ~ lag(fhpolrigaug) + lag(lrgdpch),
+              data = X5_yr_panel,
+              index = c("code_numeric", "year_numeric"),
+              model = "pooling",
+              effect = "twoways")
+table2_m2 <- plm(fhpolrigaug ~ lag(fhpolrigaug) + lag(lrgdpch),
+              data = X5_yr_panel,
+              index = c("code_numeric", "year_numeric"),
+              model = "within",
+              effect = "twoways")
+table2_m4 <- pgmm(fhpolrigaug ~ lag(fhpolrigaug) + lag(lrgdpch, 2) | lag(lrgdpch, 2),
+               data = X5_yr_panel,
+               index = c("code_numeric", "year_numeric"),
+               effect = "twoways",
+               model = "twosteps")
+table2_m5 <- plm(fhpolrigaug ~ lag(lrgdpch),
+                data=X5_yr_panel,
+                index = c("code_numeric", "year_numeric"),
+                model = "within",
+                effect = "twoways")
+
+#I need to remove Model 4 (GMM) as the stargazer cannot put together with other models
+table2 <- list("Pooled OLS (1)"=table2_m1, 
+               "Two-way FE (2)"=table2_m2, 
+               "Two-way FE (5)"=table2_m5)
+
+#Let's look at Table 2 - Model 4
+#stargazer(table2_m4, 
+#          title="Table 2 - Model 4 Arellano-Bond GMM", 
+#          dep.var.labels = "Democracy",
+#          covariate.labels = c("Democracy (t-1)", "log Income per Capita (t-2)"), 
+ #         type="text", out.header=TRUE)
+
+#stargazer(table2, title="Table 2 - Model 1, 2, 5", align=TRUE,
+#          dep.var.labels = "Democracy",
+#          covariate.labels = c("Democracy (t-1)", "log Income per capita (t-1)", "Intercept"), type="text", out.header=TRUE
+#)
+```
+
+Let's take a look at models 1, 2, and 5 from Table 2 with the 95% CI plot:
+
+```{r, echo=FALSE}
+table_map <- c("lag(lrgdpch)"="log Income per capita (t-1)",
+               "lag(fhpolrigaug)"="Democracy (t-1)")
+
+modelplot(table2,
+          coef_omit = "Intercept", 
+          coef_map = table_map,
+          background = b) +
+  labs(x = "95% Confidence Interval of coefficients",
+        y = "Coefficients name",
+       caption = "Dependent variable is Democracy (Freedom House)") +
+    scale_color_manual(values = wes_palette('Darjeeling1'))
+
+```
+
+Remember that, DV: Democracy; IV: log Income/capita (t-1).
+
+We can confirm that:\
+
+1.  Pooled OLS shows that there is an effect of income on democracy.\
+
+2.  After controlling for unit-specific time-invariant effects (i.e., conditional on the confounders/ close the backdoor path), the effects are gone (Two-way FE Model 2) or substantively small to neglect (Two-way FE Model 5).
+
+## Replication of Table 5 (plot only)
+
+Table 5 Replication from Model 4 to Model 9 (excluding model 6 - Arellano-Bond GMM model). From Model 4 to 9, Acemoglu et al (2008) used instrumental variable with two-way fixed effects. For my interest, I will replicate only this part and exclude model 6.
+
+```{r, IV method - Table 5, echo=FALSE}
+#Table 5 - model 4
+table5_4ivA <- plm(fhpolrigaug ~ lag(lrgdpch) | lag(nsave, 2),
+              data = X5_yr_panel,
+              index = c("code_numeric", "year_numeric"),
+              model = "within",
+              effect = "twoways")
+table5_4ivB <- plm(lag(lrgdpch) ~ lag(nsave, 2),
+              data = X5_yr_panel,
+              index = c("code_numeric", "year_numeric"),
+              model = "within",
+              effect = "twoways")
+
+# model 5
+table5_5ivA <- plm(fhpolrigaug ~ lag(fhpolrigaug) + lag(lrgdpch) | lag(fhpolrigaug) + lag(nsave, 2),
+              data = X5_yr_panel,
+              index = c("code_numeric", "year_numeric"),
+              model = "within",
+              effect = "twoways")
+table5_5ivB <- plm(lag(lrgdpch) ~ lag(fhpolrigaug) + lag(nsave, 2),
+              data = X5_yr_panel,
+              index = c("code_numeric", "year_numeric"),
+              model = "within",
+              effect = "twoways")
+
+# Model 7
+table5_7ivA <- plm(fhpolrigaug ~ lag(lrgdpch) + lag(laborshare) | lag(laborshare) + lag(nsave, 2), 
+                  data = X5_yr_panel,
+              index = c("code_numeric", "year_numeric"),
+              model = "within",
+              effect = "twoways")
+table5_7ivB <- plm(lag(lrgdpch) ~ lag(laborshare) + lag(nsave, 2), 
+                  data = X5_yr_panel,
+              index = c("code_numeric", "year_numeric"),
+              model = "within",
+              effect = "twoways")
+
+# Model 8
+table5_8ivA <- plm(fhpolrigaug ~ lag(fhpolrigaug) + lag(lrgdpch)| lag(fhpolrigaug) + lag(nsave, 2), 
+                  data = X5_yr_panel,
+              index = c("code_numeric", "year_numeric"),
+              model = "within",
+              effect = "twoways")
+table5_8ivB <- plm(lag(lrgdpch) ~ lag(fhpolrigaug) + lag(nsave, 2), 
+                  data = X5_yr_panel,
+              index = c("code_numeric", "year_numeric"),
+              model = "within",
+              effect = "twoways")
+
+# Model 9
+table5_9ivA <- plm(fhpolrigaug ~ lag(lrgdpch) | lag(nsave, 2) + lag(nsave, 3),
+              data = X5_yr_panel,
+              index = c("code_numeric", "year_numeric"),
+              model = "within",
+              effect = "twoways")
+table5_9ivB <- plm(lag(lrgdpch) ~ lag(nsave, 2) + lag(nsave, 3),
+              data = X5_yr_panel,
+              index = c("code_numeric", "year_numeric"),
+              model = "within",
+              effect = "twoways")
+
+table5_sumA <- list(
+                "FE 2SLS (4)"=table5_4ivA, 
+                "FE 2SLS (5)"=table5_5ivA, 
+                "FE 2SLS (7)"=table5_7ivA, 
+                "FE 2SLS (8)"=table5_8ivA, 
+                "FE 2SLS (9)"=table5_9ivA
+                )
+
+table5_sumB <- list(
+                "FE 2SLS (4)"=table5_4ivB, 
+                "FE 2SLS (5)"=table5_5ivB, 
+                "FE 2SLS (7)"=table5_7ivB, 
+                "FE 2SLS (8)"=table5_8ivB, 
+                "FE 2SLS (9)"=table5_9ivB
+                )
+
+#rename coefficients for coef_map
+sumAm <- c("lag(laborshare)"="Labor share (t-1)", 
+           "lag(fhpolrigaug)"="Democracy (t-1)", 
+           "lag(lrgdpch)"="log Income per capita (t-1)")
+
+sumBm <- c("lag(nsave, 3)" = "Saving rate (t-3)",
+           "lag(laborshare)"="Labor share (t-1)",
+           "lag(fhpolrigaug)"="Democracy (t-1)",
+           "lag(nsave, 2)" = "Saving rate (t-2)"
+           )
+```
+
+Let's plot the result of first stage. *Note that, DV now is lag of log Income/capita (t-1), IV is the saving rate lagged by (t-2) or (t-3)*.
+
+```{r, echo=FALSE}
+# First stage
+modelplot(table5_sumB, 
+          coef_omit = "Intercept", 
+          coef_map = sumBm,
+          background = b) +
+  labs(x = "95% Confidence Interval of coefficients",
+        y = "Coefficients name",
+       caption = "Dependent variable is lag of log Income per capita") +
+    scale_color_manual(values = wes_palette('Darjeeling2'))
+```
+
+We see our instrumental variable saving rate is strongly correlated with the income. The authors proposed one possible channel (i.e., labor share): labor share also correlates strongly with income.
+
+And, the second stage:
+
+```{r, echo=FALSE}
+# Second stage
+modelplot(table5_sumA, 
+          coef_omit = "Intercept", 
+          coef_map = sumAm,
+          background = b) +
+  labs(x = "95% Confidence Interval of coefficients",
+        y = "Coefficients name",
+       caption = "Dependent variable is Democracy (Freedom House)") +
+    scale_color_manual(values = wes_palette('Darjeeling1'))
+
+```
+
+We do see that the income effect is predicted around 0. Moreover, labor share effect is also possibly null: the exclusion restriction may be upheld (i.e., "labor share" - *a channel of saving rate* - predicts "income" but not "democracy"). While we have never been able to "list out" every possible underlying channel, the authors tried their best to prove that income does not predict democracy at all.
+
+## Replication of Table 6 (plot only)
+
+Table 6 Replication, from Model 4 to 9 (excluding model 5) Here I use `plm` package:
+
+```{r, iv method for Table 6, echo=FALSE}
+
+#Table 6 - model 4
+table6_4ivA <- plm(fhpolrigaug ~ lag(lrgdpch) | lag(worldincome),
+              data = X5_yr_panel,
+              index = c("code_numeric", "year_numeric"),
+              model = "within",
+              effect = "twoways")
+table6_4ivB <- plm(lag(lrgdpch) ~ lag(worldincome),
+              data = X5_yr_panel,
+              index = c("code_numeric", "year_numeric"),
+              model = "within",
+              effect = "twoways")
+
+
+# model 5
+table6_5ivA <- plm(fhpolrigaug ~ lag(fhpolrigaug) + lag(lrgdpch) | lag(fhpolrigaug) + lag(worldincome),
+              data = X5_yr_panel,
+              index = c("code_numeric", "year_numeric"),
+              model = "within",
+              effect = "twoways")
+table6_5ivB <- plm(lag(lrgdpch) ~ lag(fhpolrigaug) + lag(worldincome),
+              data = X5_yr_panel,
+              index = c("code_numeric", "year_numeric"),
+              model = "within",
+              effect = "twoways")
+
+# Model 7
+table6_7ivA <- plm(fhpolrigaug ~ lag(lrgdpch) + lag(worlddemocracy) | lag(worlddemocracy) + lag(worldincome), 
+                  data = X5_yr_panel,
+              index = c("code_numeric", "year_numeric"),
+              model = "within",
+              effect = "twoways")
+table6_7ivB <- plm(lag(lrgdpch) ~ lag(worldincome) + lag(worlddemocracy), 
+                  data = X5_yr_panel,
+              index = c("code_numeric", "year_numeric"),
+              model = "within",
+              effect = "twoways")
+
+# Model 8
+table6_8ivA <- plm(fhpolrigaug ~ lag(lrgdpch)| lag(worldincome, 2), 
+                  data = X5_yr_panel,
+              index = c("code_numeric", "year_numeric"),
+              model = "within",
+              effect = "twoways")
+table6_8ivB <- plm(lag(lrgdpch) ~ lag(worldincome, 2), 
+                  data = X5_yr_panel,
+              index = c("code_numeric", "year_numeric"),
+              model = "within",
+              effect = "twoways")
+
+# Model 9
+table6_9ivA <- plm(fhpolrigaug ~ lag(lrgdpch) | lag(worldincome) + lag(worldincome, 2),
+              data = X5_yr_panel,
+              index = c("code_numeric", "year_numeric"),
+              model = "within",
+              effect = "twoways")
+table6_9ivB <- plm(lag(lrgdpch) ~ lag(worldincome) + lag(worldincome, 2),
+              data = X5_yr_panel,
+              index = c("code_numeric", "year_numeric"),
+              model = "within",
+              effect = "twoways")
+
+
+
+#Preparing for plotting
+
+table6_sumA <- list(
+                "FE 2SLS (4)"=table6_4ivA, 
+                "FE 2SLS (5)"=table6_5ivA, 
+                "FE 2SLS (7)"=table6_7ivA, 
+                "FE 2SLS (8)"=table6_8ivA, 
+                "FE 2SLS (9)"=table6_9ivA
+                )
+
+table6_sumB <- list(
+                "FE 2SLS (4)"=table6_4ivB, 
+                "FE 2SLS (5)"=table6_5ivB, 
+                "FE 2SLS (7)"=table6_7ivB, 
+                "FE 2SLS (8)"=table6_8ivB, 
+                "FE 2SLS (9)"=table6_9ivB
+                )
+
+#rename coefficients for coef_map
+sumAm_table6 <- c("lag(worlddemocracy)"="Trade-weighted democracy (t-1)", 
+           "lag(fhpolrigaug)"="Democracy (t-1)", 
+           "lag(lrgdpch)"="Income per capita (t-1)")
+
+sumBm_table6 <- c( "lag(worldincome, 2)"="Trade-weighted GDP (t-2)", 
+                   "lag(worlddemocracy)"="Trade-weighted democracy (t-1)",
+                   "lag(fhpolrigaug)"="Democracy (t-1)", 
+                   "lag(worldincome)"="Trade-weighted GDP (t-1)")
+```
+
+First stage:
+
+```{r, echo=FALSE}
+#Plot function from here
+modelplot(table6_sumB, 
+          coef_omit = "Intercept", 
+          coef_map = sumBm_table6,
+          background = b) +
+  labs(x = "95% Confidence Interval of coefficients",
+        y = "Coefficients name",
+       caption = "Dependent variable is lag of log Income per capita") +
+    scale_color_manual(values = wes_palette('Darjeeling2'))
+```
+
+We can see that trade-weighted GDP strongly predicts income, and the possible channel trade-weighted democracy also strongly predicts income.
+
+And, the second stage:
+
+```{r, echo=FALSE}
+modelplot(table6_sumA, 
+          coef_omit = "Intercept", 
+          coef_map = sumAm_table6,
+          background = b) +
+  labs(x = "95% Confidence Interval of coefficients",
+        y = "Coefficients name",
+       caption = "Dependent variable is lag of log Income per capita") +
+    scale_color_manual(values = wes_palette('Darjeeling1'))
+```
+
+Now, we can see that the lagged income is predicted to be close to zero. We know that IV method is inefficient and the standard error is wide. But again, this can be a (weak) evidence showing that income has null effect on democratization.
+
+Again, the possible channel (trade-weighted democracy) seems like having null effect on democracy, which makes the exclusion restriction seems valid.

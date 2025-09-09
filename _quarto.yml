@@ -1,0 +1,38 @@
+project:
+  type: website
+
+website:
+  title: "Minh Dao's website"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - about.qmd
+      - research.qmd
+      - resume.qmd
+      - text: Assignments
+        menu: 
+        - text: Assignment 1
+          href: assignment1.qmd
+
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true
+  
+editor: visual
+
+outputs:
+  - name: acemoglu_html
+    format: html
+
+metadata:
+  quarto:
+    execution:
+      engine: R
+    knitr:
+      code:
+        eval: true
+        echo: true
+

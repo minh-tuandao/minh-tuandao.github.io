@@ -1,11 +1,10 @@
 ---
-title: "Research"
+title: "Research Projects"
+bibliography: references.bib
 ---
 
-My research methodologies include DiD, synthetic control method, trajectory balancing, etc.
+I have a vested interested in developing my methodological know-how, especially quantitative approaches. Here are some examples of my paper and past class assignments (replication) as an attempt to learn & use STATA, R.
 
-My research topics include political economy of foreign direct investment
-
-```{r}
-1 + 1
-```
+1.  **Mixed effects model** (both random- and fixed-effects) evaluating the information processing of vulnerable groups and the outcome of adoption of health messages in COVID-19 [@dao2022]. The theoretical framework in use is based on Extended Parallel Process Model by Witte.
+2.  **Two-way fix-effects with dynamic modeling** based on income - democracy nexus with the replication of the famous Income and Democracy paper [@acemoglu2008] with (i) different dataset, (ii) time frequency from five-year to annual interval, (iii) longer time span from 1960 to 2022, (iv) checking for heterogeneous effect of income in sub-samples (countries with past 500-year colonial experience or not). Please find my replication paper [**here**](acemoglu.qmd).
+3.  **Synthetic control method**: replication based on the famous paper on the effect of Basque's terrorism on GDP per capita [@abadie2003] with comments from an improved synthetic control, i.e., *augmented synthetic control* [@ben2021augmented]. Please find my replication paper here (update later).

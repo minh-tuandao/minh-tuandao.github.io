@@ -1,0 +1,7 @@
+---
+title: "Ukraine OFDI - MPSA 2025"
+---
+
+<script>
+window.location.href = "https://docs.google.com/gview?url=https://raw.githubusercontent.com/minh-tuandao/minh-tuandao.github.io/main/Ukraine_OFDI_Minh.pdf&embedded=true";
+</script>
