@@ -9,7 +9,7 @@
   {
     "objectID": "about.html",
     "href": "about.html",
-    "title": "About me",
+    "title": "About myself",
     "section": "",
     "text": "About myself:\nI am currently a PhD candidate in Public Policy and Political Economy program at the University of Texas at Dallas with a focus on quantitative methodology, in particular I am also interested in pursuing a minor in Geographic Information Systems program as an extended methodological tools for policy analysis.\nMy research topics include the political economy of foreign direct investment, investment and/or trade agreements among countries. Moreover, I am also keen on improving/developing my methodological skills by learning from great examples of some of the general political economy or economic debates such as income - democracy nexus, Basque’s terrorism impact on GDP per capita, etc.\nMy contact via email: mtd220000@utdallas.edu or tuanminh112093@gmail.com."
   },
@@ -74,7 +74,7 @@
     "href": "index.html",
     "title": "Minh Dao’s Website",
     "section": "",
-    "text": "Hi everyone,\nMy name is Minh Dao, currently I am a PhD candidate of PPPE program at UT Dallas with expected graduation in 2027.\nMy website includes some samples of my past projects and assignments for the current class of Fall 2025 - Methods of Data Collection and Production."
+    "text": "Hi everyone,\nMy name is Minh Dao, currently I am a PhD candidate of PPPE program at UT Dallas with expected graduation in 2027.\nMy website includes some samples of my past projects and assignments for the current class of Fall 2025 - Methods of Data Collection and Production.\nUpdated November 2025."
   },
   {
     "objectID": "assignment4.html",
@@ -152,5 +152,19 @@
     "title": "Assignment 5: Government data API",
     "section": "Large files and slow downloading",
     "text": "Large files and slow downloading\nWe have to insert random sleep intervals to not look like a bot. This makes bulk retrieval time-consuming."
+  },
+  {
+    "objectID": "resume.html",
+    "href": "resume.html",
+    "title": "Resume",
+    "section": "",
+    "text": "Updated Nov.2025"
+  },
+  {
+    "objectID": "resume.html#resume-pdf-version",
+    "href": "resume.html#resume-pdf-version",
+    "title": "Resume",
+    "section": "",
+    "text": "Updated Nov.2025"
   }
 ]
