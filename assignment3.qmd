@@ -1,0 +1,98 @@
+---
+title: "Assignment 3: Mapping Census Map"
+---
+
+```{r packages}
+library(tidycensus)
+library(tigris)
+library(sf)
+library(dplyr)
+library(ggplot2)
+library(readr)
+```
+
+```{r set up, include=FALSE, eval=FALSE}
+
+options(tigris_use_cache = TRUE)
+
+# 1) API key (uncomment and paste your key)
+census_api_key("b432b8a91fe6c0181bed17f53d2d0fc5df9ef639", install = FALSE)
+
+# Parameters
+state_abbr <- "TX"
+geo_level  <- "county"
+my_vars    <- c(home_value = "B25077_001", unemployed = "B23025_005")
+year_acs   <- 2023
+survey     <- "acs5"
+
+acs <- get_acs(
+  geography = geo_level,
+  variables = my_vars,
+  state = state_abbr,
+  year = year_acs,
+  survey = survey,
+  geometry = TRUE
+)
+
+# Convert to wide format
+acs_wide <- acs |>
+  tidyr::pivot_wider(
+    id_cols = c(GEOID, NAME, geometry),
+    names_from = variable,
+    values_from = c(estimate, moe)
+  )
+
+head(acs_wide)
+
+# Save
+sf::st_write(acs_wide, "dataset/acs_data.gpkg", delete_dsn = TRUE)
+```
+
+Load the pre-downloaded dataset:
+
+```{r, message=FALSE}
+acs_wide <- sf::st_read("dataset/acs_data.gpkg")
+```
+
+# Map: Choropleth of Median Home Value
+
+```{r}
+state_abbr <- "TX"
+geo_level  <- "county"
+my_vars    <- c(home_value = "B25077_001", unemployed = "B23025_005")
+year_acs   <- 2023
+survey     <- "acs5"
+
+ggplot(acs_wide) +
+  geom_sf(aes(fill = estimate_home_value), color = NA) +
+  scale_fill_viridis_c(name = "Median Home Value ($)", option = "C") +
+  labs(
+    title = paste0("Median Home Value (ACS ", year_acs, " 5-year)"),
+    subtitle = paste0(state_abbr, " — ", geo_level, " level"),
+    caption = "Source: U.S. Census Bureau via tidycensus"
+  ) +
+  theme_minimal() +
+  theme(
+    text = element_text(family = "Palatino"),
+    plot.title = element_text(size = 14, face = "bold"),
+    plot.subtitle = element_text(size = 11),
+    legend.position = "right"
+  )
+```
+
+# Table: Top/Bottom 10 by Unemployment
+
+```{r}
+top10 <- acs_wide |>
+  arrange(desc(estimate_unemployed)) |>
+  select(NAME, estimate_unemployed, moe_unemployed) |>
+  slice_head(n = 10)
+
+bottom10 <- acs_wide |>
+  arrange(estimate_unemployed) |>
+  select(NAME, estimate_unemployed, moe_unemployed) |>
+  slice_head(n = 10)
+
+top10
+bottom10
+```

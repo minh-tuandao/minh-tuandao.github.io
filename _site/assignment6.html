@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Assignment 1 – Minh Dao’s website</title>
+<title>Assignment 6: Text Analytics using Quanteda – Minh Dao’s website</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -151,7 +151,9 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#assignment-1" id="toc-assignment-1" class="nav-link active" data-scroll-target="#assignment-1">Assignment 1</a></li>
+  <li><a href="#summit-data-president-biden---president-xi" id="toc-summit-data-president-biden---president-xi" class="nav-link active" data-scroll-target="#summit-data-president-biden---president-xi">Summit Data: President Biden - President Xi</a></li>
+  <li><a href="#us-presidential-inaugural-speeches" id="toc-us-presidential-inaugural-speeches" class="nav-link" data-scroll-target="#us-presidential-inaugural-speeches">US Presidential Inaugural Speeches</a></li>
+  <li><a href="#what-is-wordfish" id="toc-what-is-wordfish" class="nav-link" data-scroll-target="#what-is-wordfish">What is “Wordfish?”</a></li>
   </ul>
 </nav>
     </div>
@@ -160,7 +162,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Assignment 1</h1>
+<h1 class="title">Assignment 6: Text Analytics using Quanteda</h1>
 </div>
 
 
@@ -177,10 +179,61 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="assignment-1" class="level1">
-<h1>Assignment 1</h1>
-<p>This website is created using RStudio Quarto. The cosmo theme is used for professional look.</p>
-<p>The navigation bar includes links for connecting author’s contents in different areas.</p>
+<section id="summit-data-president-biden---president-xi" class="level1">
+<h1>Summit Data: President Biden - President Xi</h1>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="data_collection/plots/bidenxi_tweets.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+<p>The Biden–Xi summit generated mostly informational tweets, as shown by the frequency plot dominated by basic terms like&nbsp;<em>“biden,” “xi,” “summit,”</em>&nbsp;and&nbsp;<em>“virtual,”</em>&nbsp;with China-related words appearing prominently.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="data_collection/plots/network_plot.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+<p>The hashtag network shows two main themes: one focused on U.S.–China relations (#china, #americans, #fentanyl, #coronavirus) and another on human rights (#uyghurs, #tibetans, #humanrights).</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="data_collection/plots/network_plot_users.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1013"></p>
+</figure>
+</div>
+<p>The user network reveals several small, separate clusters—journalists, policy analysts, and even NBA-related accounts—indicating that discussion was fragmented rather than centered on a single influential group.</p>
+<p>Overall, the summit sparked multiple parallel conversations rather than a unified or highly polarized debate.</p>
+</section>
+<section id="us-presidential-inaugural-speeches" class="level1">
+<h1>US Presidential Inaugural Speeches</h1>
+<p>We will analyze total 60 inaugural speeches from 1789 - 2005 of 36 unique U.S. Presidents.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="data_collection/plots/rel_freq_american.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+<p>Across more than two centuries of inaugural addresses, several consistent linguistic patterns emerge. The relative-frequency plot of the term&nbsp;<strong>“American”</strong>&nbsp;shows that while most presidents use the term sparingly, some modern presidents—especially Clinton and Trump—use it more frequently when normalized by speech length, suggesting a rhetorical shift toward more explicit national identity framing in contemporary inaugurals.&nbsp;</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="data_collection/plots/top_10_terms.png" class="img-fluid figure-img"></p>
+<figcaption>Top 10 Terms</figcaption>
+</figure>
+</div>
+<p>The&nbsp;<strong>top-term comparisons</strong>&nbsp;for recent presidents highlight both common themes and individual emphases: Biden and Obama frequently invoke concepts such as “freedom,” “democracy,” and “people,” whereas Bush and Trump show a stronger emphasis on “America,” “nation,” and “great.” These differences reveal variation in tone and messaging even within the same historical era.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="data_collection/plots/wordcloud_presidents.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+<p>Finally, the&nbsp;<strong>overall word cloud</strong>&nbsp;summarizing the full set of 60 speeches shows enduring thematic anchors of presidential rhetoric—terms like&nbsp;<em>government</em>,&nbsp;<em>people</em>,&nbsp;<em>states</em>,&nbsp;<em>country</em>,&nbsp;<em>great</em>, and&nbsp;<em>may</em>&nbsp;dominate—reflecting long-standing concerns with governance, national unity, and civic duty. Together, these visualizations illustrate both the continuity of presidential messaging over time and the distinctive rhetorical signatures of individual presidents.</p>
+</section>
+<section id="what-is-wordfish" class="level1">
+<h1>What is “Wordfish?”</h1>
+<p>Wordfish is a tool that helps us understand how texts differ from one another by placing them on a single underlying scale. Instead of telling the model what “left,” “right,” or any other dimension means, Wordfish simply looks at how often certain words are used in each document and figures out which texts tend to sound similar or different. Documents that rely on similar vocabulary end up close together on this scale, while those that use distinct language are placed farther apart. In other words, wordfish is an unsupervised method.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="data_collection/plots/wordfish_position.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+<p>Earlier presidents, especially Eisenhower (1953, 1957), Kennedy (1961), Johnson, and Nixon (1973–1969,) cluster toward the lower end of the scale. This suggests that mid-20th-century inaugurals shared a more similar rhetorical style, likely shaped by Cold War themes, formal institutional language, and a more standardized presidential voice. Speeches from the 1980s onward shift upward, with Reagan, Clinton, Bush, Obama, and finally Biden and Trump occupying increasingly higher positions. The very high scores for Trump (2017 and 2025) and Biden (2021) reflect more distinctive modern rhetorical styles that rely on different vocabularies, emotional tones, or issue emphases compared to traditional mid-century speeches.</p>
+<p>Overall, the plot shows a gradual movement from older, institution-focused rhetoric toward more polarized, personalized, or contemporary styles in recent decades.</p>
 
 
 </section>

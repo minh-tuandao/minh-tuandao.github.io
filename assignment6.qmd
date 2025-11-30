@@ -1,0 +1,45 @@
+---
+title: "Assignment 6: Text Analytics using Quanteda"
+---
+
+# Summit Data: President Biden - President Xi
+
+![](data_collection/plots/bidenxi_tweets.png){fig-align="center"}
+
+The Biden–Xi summit generated mostly informational tweets, as shown by the frequency plot dominated by basic terms like *“biden,” “xi,” “summit,”* and *“virtual,”* with China-related words appearing prominently.
+
+![](data_collection/plots/network_plot.png){fig-align="center"}
+
+The hashtag network shows two main themes: one focused on U.S.–China relations (#china, #americans, #fentanyl, #coronavirus) and another on human rights (#uyghurs, #tibetans, #humanrights).
+
+![](data_collection/plots/network_plot_users.png){fig-align="center" width="1013"}
+
+The user network reveals several small, separate clusters—journalists, policy analysts, and even NBA-related accounts—indicating that discussion was fragmented rather than centered on a single influential group.
+
+Overall, the summit sparked multiple parallel conversations rather than a unified or highly polarized debate.
+
+# US Presidential Inaugural Speeches
+
+We will analyze total 60 inaugural speeches from 1789 - 2005 of 36 unique U.S. Presidents.
+
+![](data_collection/plots/rel_freq_american.png){fig-align="center"}
+
+Across more than two centuries of inaugural addresses, several consistent linguistic patterns emerge. The relative-frequency plot of the term **“American”** shows that while most presidents use the term sparingly, some modern presidents—especially Clinton and Trump—use it more frequently when normalized by speech length, suggesting a rhetorical shift toward more explicit national identity framing in contemporary inaugurals. 
+
+![Top 10 Terms](data_collection/plots/top_10_terms.png){fig-align="center"}
+
+The **top-term comparisons** for recent presidents highlight both common themes and individual emphases: Biden and Obama frequently invoke concepts such as “freedom,” “democracy,” and “people,” whereas Bush and Trump show a stronger emphasis on “America,” “nation,” and “great.” These differences reveal variation in tone and messaging even within the same historical era.
+
+![](data_collection/plots/wordcloud_presidents.png){fig-align="center"}
+
+Finally, the **overall word cloud** summarizing the full set of 60 speeches shows enduring thematic anchors of presidential rhetoric—terms like *government*, *people*, *states*, *country*, *great*, and *may* dominate—reflecting long-standing concerns with governance, national unity, and civic duty. Together, these visualizations illustrate both the continuity of presidential messaging over time and the distinctive rhetorical signatures of individual presidents.
+
+# What is "Wordfish?"
+
+Wordfish is a tool that helps us understand how texts differ from one another by placing them on a single underlying scale. Instead of telling the model what “left,” “right,” or any other dimension means, Wordfish simply looks at how often certain words are used in each document and figures out which texts tend to sound similar or different. Documents that rely on similar vocabulary end up close together on this scale, while those that use distinct language are placed farther apart. In other words, wordfish is an unsupervised method.
+
+![](data_collection/plots/wordfish_position.png){fig-align="center"}
+
+Earlier presidents, especially Eisenhower (1953, 1957), Kennedy (1961), Johnson, and Nixon (1973–1969,) cluster toward the lower end of the scale. This suggests that mid-20th-century inaugurals shared a more similar rhetorical style, likely shaped by Cold War themes, formal institutional language, and a more standardized presidential voice. Speeches from the 1980s onward shift upward, with Reagan, Clinton, Bush, Obama, and finally Biden and Trump occupying increasingly higher positions. The very high scores for Trump (2017 and 2025) and Biden (2021) reflect more distinctive modern rhetorical styles that rely on different vocabularies, emotional tones, or issue emphases compared to traditional mid-century speeches.
+
+Overall, the plot shows a gradual movement from older, institution-focused rhetoric toward more polarized, personalized, or contemporary styles in recent decades.

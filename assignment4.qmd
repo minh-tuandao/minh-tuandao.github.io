@@ -1,0 +1,105 @@
+---
+title: "Assignment 4: Webscraping"
+---
+
+# Foreign Reserves (Wikipedia)
+
+```{r}
+# Load packages
+library(rvest)
+library(dplyr)
+library(stringr)
+library(readr)
+
+# Step 1: Scrape data from Wikipedia
+url <- 'https://en.wikipedia.org/wiki/List_of_countries_by_foreign-exchange_reserves'
+
+wikiforreserve <- read_html(url)
+
+# Extract all tables from the page
+tables <- wikiforreserve %>% html_table(fill = TRUE)
+
+# The first table is the main one with countries' foreign reserves
+fores <- tables[[1]]
+
+# Inspect column names
+names(fores)
+head(fores)
+
+```
+
+Clean up the dataframe:
+
+```{r}
+names(fores) <- c(
+  "Country", "Continent",
+  "Reserves_InclGold_USD", "Change_InclGold_USD",
+  "Reserves_ExclGold_USD", "Change_ExclGold_USD",
+  "LastReported", "Ref"
+)
+
+# Drop the first two header rows (non-country rows)
+fores_clean <- fores[-c(1,2), ]
+
+# Clean numeric variables
+fores_clean <- fores_clean %>%
+  mutate(
+    Reserves_InclGold_USD = as.numeric(gsub(",", "", Reserves_InclGold_USD)),
+    Change_InclGold_USD   = as.numeric(gsub(",", "", Change_InclGold_USD)),
+    Reserves_ExclGold_USD = as.numeric(gsub(",", "", Reserves_ExclGold_USD)),
+    Change_ExclGold_USD   = as.numeric(gsub(",", "", Change_ExclGold_USD)),
+    LastReported = trimws(str_split_fixed(LastReported, "\\[", n = 2)[,1])
+  )
+
+# Drop non-country rows and NAs
+fores_clean <- fores_clean %>%
+  filter(!is.na(Country), !Country %in% c("World", "Total", "Country(as recognized by the U.N.)")) %>%
+  filter(!grepl("Country", Country))
+
+# Inspect cleaned result
+glimpse(fores_clean)
+head(fores_clean, 10)
+
+```
+
+# Create a function to scrape Wiki table
+
+```{r}
+scrape_wiki_table <- function(url, table_index = 1) {
+  page <- read_html(url)
+  tables <- html_table(page, fill = TRUE)
+  df <- tables[[table_index]]
+  
+  # Drop empty or duplicate columns
+  df <- df[, !is.na(names(df)) & names(df) != ""]
+  
+  # Clean footnotes
+  df <- df %>%
+    mutate(across(where(is.character),
+                  ~ trimws(str_split_fixed(., "\\[", n = 2)[,1])))
+  return(df)
+}
+
+```
+
+## Examples
+
+```{r}
+# Example use:
+gdp <- c("https://en.wikipedia.org/wiki/List_of_countries_by_GDP_(nominal)")
+
+wiki_gdp <- scrape_wiki_table(gdp, table_index = 3)
+head(wiki_gdp)
+```
+
+# Data plan
+
+Here are some steps to collect data:
+
+1.  Research goal: cross-country data on some macro indicators
+2.  Data sources: Wikipedia page
+3.  Variables: e.g., identifiers such as country, foreign reserves measurement, year reported, etc.
+4.  Scraping procedures: follow rvest::read_html() and create a function to get the data and put them in the desired data frame.
+5.  Cleaning & transformation: rename and ensure the appropriate type for each variable.
+6.  Joining data: choose appropriate identifier to merge different data set into one final.
+7.  Quality check: a summary statistics of all variables for missing values or outliers whether there are some strange values. We may cross-check with official sources.

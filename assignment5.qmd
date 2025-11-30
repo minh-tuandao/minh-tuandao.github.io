@@ -1,0 +1,86 @@
+---
+title: "Assignment 5: Government data API"
+---
+
+# Scraping code
+
+(Not running)
+
+```{r, eval = FALSE}
+
+# Start with a clean plate and lean loading to save memory
+gc(reset=T)
+
+# install.packages(c("purrr", "magrittr")
+library(purrr)
+library(magrittr) # Alternatively, load tidyverse
+setwd("/Users/tuanminh/Library/CloudStorage/OneDrive-Personal/Projects/Git2/data_collection/")
+library(rjson)
+library(jsonlite)
+library(data.table)
+library(readr)
+
+gf_list = jsonlite::read_json("gov_api/search_results.json") # Download from government site
+gov_df <- gf_list$resultSet |> dplyr::bind_rows()
+
+gov_df$publishdate <- as.Date(gov_df$publishdate)
+
+gov_top10 <- gov_df |>
+  dplyr::arrange(dplyr::desc(publishdate)) |>
+  dplyr::slice(1:10)
+
+# Check
+gov_top10[, c("title", "publishdate")]
+
+## Extract URLs and IDs
+pdf_urls <- gov_top10$pdfLink
+
+if ("packageId" %in% names(gov_top10)) {
+  pdf_ids <- gov_top10$packageId
+} else {
+  pdf_ids <- gov_top10$index  # fallback
+}
+
+## Directory to save (same as before)
+save_dir <- "/Users/tuanminh/Library/CloudStorage/OneDrive-Personal/Projects/Git2/data_collection/gov_api/"
+
+## Download function (same as govtdata01.R)
+download_govfiles_pdf <- function(url, id) {
+  tryCatch({
+    destfile <- paste0(save_dir, "govfiles_", id, ".pdf")
+    download.file(url, destfile = destfile, mode = "wb")
+    Sys.sleep(runif(1, 1, 3))
+    paste("Successfully downloaded:", url)
+  },
+  error = function(e) paste("Failed to download:", url))
+}
+
+## Download the 10 most recent
+start.time <- Sys.time()
+message("Starting downloads: Top 10 most recent documents")
+
+results_top10 <- seq_along(pdf_urls) |>
+  purrr::map_chr(~ download_govfiles_pdf(pdf_urls[.], pdf_ids[.]))
+
+message("Finished downloads")
+end.time <- Sys.time()
+time.taken <- end.time - start.time
+time.taken
+
+print(results_top10)
+
+```
+
+# Comment
+
+## No direct JSON/CSV
+
+GovInfo's search page does not give you directly json or csv file to automate the search and download in the next step.
+
+## Limitation of the search terms
+
+It is hard to pinpoint the search terms to get the file we want. The date can vary a lot (e.g., year 1999 and recent year 2025) in the result of json file.
+
+## Large files and slow downloading
+
+We have to insert random sleep intervals to not look like a bot. This makes bulk retrieval time-consuming.
