@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Assignment 1 – Minh Dao’s website</title>
+<title>Assignment 2 – Minh Dao’s website</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -146,15 +180,26 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#google-trends-in-r" id="toc-google-trends-in-r" class="nav-link active" data-scroll-target="#google-trends-in-r">Google Trends in R</a></li>
+  <li><a href="#compare-manual-vs.-gtrendsr" id="toc-compare-manual-vs.-gtrendsr" class="nav-link" data-scroll-target="#compare-manual-vs.-gtrendsr">Compare: manual vs.&nbsp;gtrendsR</a>
+  <ul class="collapse">
+  <li><a href="#advantages" id="toc-advantages" class="nav-link" data-scroll-target="#advantages">Advantages</a></li>
+  <li><a href="#disadvantages" id="toc-disadvantages" class="nav-link" data-scroll-target="#disadvantages">Disadvantages</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Assignment 1</h1>
+<h1 class="title">Assignment 2</h1>
 </div>
 
 
@@ -171,15 +216,48 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Here is the first assignment (drafting a research project framework):</p>
-<ol type="1">
-<li>Topic: bilateral investment treaties (BITs) and foreign direct investment (FDI)</li>
-<li>Research question: What is the effect of termination of bilateral investment treaties on the foreign direct investment (FDI)?</li>
-<li>Outcome variable is annual FDI inflow of a country</li>
-<li>Hypothesis: termination of BITs should lead to a decrease in FDI inflow.</li>
-</ol>
+<section id="google-trends-in-r" class="level1">
+<h1>Google Trends in R</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Google Trends with R</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"gtrendsR"</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gtrendsR)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>TrumpHarrisElection <span class="ot">=</span> <span class="fu">gtrends</span>(<span class="fu">c</span>(<span class="st">"Trump"</span>,<span class="st">"Harris"</span>,<span class="st">"election"</span>), <span class="at">onlyInterest =</span> <span class="cn">TRUE</span>, <span class="at">geo =</span> <span class="st">"US"</span>, <span class="at">gprop =</span> <span class="st">"web"</span>, <span class="at">time =</span> <span class="st">"today+5-y"</span>, <span class="at">category =</span> <span class="dv">0</span>, ) <span class="co"># last five years</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>the_df<span class="ot">=</span>TrumpHarrisElection<span class="sc">$</span>interest_over_time</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(TrumpHarrisElection)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>tg <span class="ot">=</span> <span class="fu">gtrends</span>(<span class="st">"tariff"</span>, <span class="at">time =</span> <span class="st">"all"</span>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Example: Tariff, China military, Taiwan </span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">gtrends</span>(<span class="fu">c</span>(<span class="st">"tariff"</span>), <span class="at">time =</span> <span class="st">"all"</span>))</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">"countries"</span>)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">gtrends</span>(<span class="fu">c</span>(<span class="st">"tariff"</span>), <span class="at">geo =</span> <span class="st">"GB"</span>, <span class="at">time =</span> <span class="st">"all"</span>)) </span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">gtrends</span>(<span class="fu">c</span>(<span class="st">"tariff"</span>), <span class="at">geo =</span> <span class="fu">c</span>(<span class="st">"US"</span>,<span class="st">"GB"</span>,<span class="st">"TW"</span>), <span class="at">time =</span> <span class="st">"all"</span>)) </span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>tg_iot <span class="ot">=</span> tg<span class="sc">$</span>interest_over_time</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>tct <span class="ot">=</span> <span class="fu">gtrends</span>(<span class="fu">c</span>(<span class="st">"tariff"</span>,<span class="st">"China military"</span>, <span class="st">"Taiwan"</span>), <span class="at">time =</span> <span class="st">"all"</span>)</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>tct <span class="ot">=</span> <span class="fu">data.frame</span>(tct<span class="sc">$</span>interest_over_time)</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">gtrends</span>(<span class="fu">c</span>(<span class="st">"tariff"</span>,<span class="st">"China military"</span>, <span class="st">"Taiwan"</span>), <span class="at">time =</span> <span class="st">"all"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="compare-manual-vs.-gtrendsr" class="level1">
+<h1>Compare: manual vs.&nbsp;gtrendsR</h1>
+<section id="advantages" class="level2">
+<h2 class="anchored" data-anchor-id="advantages">Advantages</h2>
+<ul>
+<li><p>Manual: easy to use, quick comparisons.</p></li>
+<li><p>gtrendsR: automated, fully reproducible</p></li>
+</ul>
+</section>
+<section id="disadvantages" class="level2">
+<h2 class="anchored" data-anchor-id="disadvantages">Disadvantages</h2>
+<ul>
+<li><p>Manual: manual download and limited reproducibility</p></li>
+<li><p>gtrendsR: sometimes gives different date ranges or aggregation, requires R setup</p></li>
+</ul>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

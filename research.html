@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Assignment 1 – Minh Dao’s website</title>
+<title>Research Projects – Minh Dao’s website</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,7 +20,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -97,7 +117,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">About myself</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./research.html"> 
+    <a class="nav-link active" href="./research.html" aria-current="page"> 
 <span class="menu-text">Research Projects</span></a>
   </li>  
   <li class="nav-item">
@@ -154,7 +174,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Assignment 1</h1>
+<h1 class="title">Research Projects</h1>
 </div>
 
 
@@ -171,17 +191,30 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Here is the first assignment (drafting a research project framework):</p>
+<p>I have a vested interested in developing my methodological know-how, especially quantitative approaches. Here are some examples of my paper and past class assignments (replication) as an attempt to learn &amp; use STATA, R.</p>
 <ol type="1">
-<li>Topic: bilateral investment treaties (BITs) and foreign direct investment (FDI)</li>
-<li>Research question: What is the effect of termination of bilateral investment treaties on the foreign direct investment (FDI)?</li>
-<li>Outcome variable is annual FDI inflow of a country</li>
-<li>Hypothesis: termination of BITs should lead to a decrease in FDI inflow.</li>
+<li><strong>Mixed effects model</strong> (both random- and fixed-effects) evaluating the information processing of vulnerable groups and the outcome of adoption of health messages in COVID-19 <span class="citation" data-cites="dao2022">(<a href="#ref-dao2022" role="doc-biblioref">Dao and Lim 2022</a>)</span>. The theoretical framework in use is based on Extended Parallel Process Model by Witte.</li>
+<li><strong>Two-way fix-effects with dynamic modeling</strong> based on income - democracy nexus with the replication of the famous Income and Democracy paper <span class="citation" data-cites="acemoglu2008">(<a href="#ref-acemoglu2008" role="doc-biblioref">Acemoglu et al. 2008</a>)</span> with (i) different dataset, (ii) time frequency from five-year to annual interval, (iii) longer time span from 1960 to 2022, (iv) checking for heterogeneous effect of income in sub-samples (countries with past 500-year colonial experience or not). Please find my replication paper <a href="./acemoglu.html"><strong>here</strong></a>.</li>
+<li><strong>Synthetic control method</strong>: replication based on the famous paper on the effect of Basque’s terrorism on GDP per capita <span class="citation" data-cites="abadie2003">(<a href="#ref-abadie2003" role="doc-biblioref">Abadie and Gardeazabal 2003</a>)</span> with comments from an improved synthetic control, i.e., <em>augmented synthetic control</em> <span class="citation" data-cites="ben2021augmented">(<a href="#ref-ben2021augmented" role="doc-biblioref">Ben-Michael, Feller, and Rothstein 2021</a>)</span>. Please find my replication paper here (update later).</li>
 </ol>
 
 
 
-</main> <!-- /main -->
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-abadie2003" class="csl-entry" role="listitem">
+Abadie, Alberto, and Javier Gardeazabal. 2003. <span>“The Economic Costs of Conflict: A Case Study of the Basque Country.”</span> <em>American Economic Review</em> 93 (1): 113–32.
+</div>
+<div id="ref-acemoglu2008" class="csl-entry" role="listitem">
+Acemoglu, Daron, Simon Johnson, James A. Robinson, and Pierre Yared. 2008. <span>“Income and Democracy.”</span> <em>The American Economic Review</em> 98 (3): 808–42. <a href="http://www.jstor.org/stable/29730096">http://www.jstor.org/stable/29730096</a>.
+</div>
+<div id="ref-ben2021augmented" class="csl-entry" role="listitem">
+Ben-Michael, Eli, Avi Feller, and Jesse Rothstein. 2021. <span>“The Augmented Synthetic Control Method.”</span> <em>Journal of the American Statistical Association</em> 116 (536): 1789–1803.
+</div>
+<div id="ref-dao2022" class="csl-entry" role="listitem">
+Dao, Minh Tuan, and Seunghoo Lim. 2022. <span>“Fear of Disasters Within the Risk Communication Network of Foreign Students in Japan Amid the COVID-19 Pandemic Crisis: A Cohort Design.”</span> <em>International Journal of Disaster Risk Reduction</em> 71 (March): 102808. <a href="https://doi.org/10.1016/j.ijdrr.2022.102808">https://doi.org/10.1016/j.ijdrr.2022.102808</a>.
+</div>
+</div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
